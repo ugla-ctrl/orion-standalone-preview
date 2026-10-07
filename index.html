@@ -822,14 +822,14 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
     }).then(function(r){return r.ok?r.json():null;}).then(function(status){
       if(status==='approved'){unlock(v);return;}
       if(status==='denied'){err.textContent='That request was not approved.';if(btn){btn.disabled=false;btn.textContent='View deck \u2192';}return;}
-      if(status==='pending'){setPending('Thanks \u2014 your request is still pending approval. You\u2019ll get access as soon as it\u2019s approved.');return;}
+      if(status==='pending'){setPending('Thanks, your request is still pending approval. You\u2019ll get access as soon as it\u2019s approved.');return;}
       if(isNewRequest){
         /* no existing row: submit it, status defaults to 'pending' */
         fetch(SUPA_URL+'/rest/v1/orion_deck_leads',{
           method:'POST',
           headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
           body:JSON.stringify({email:v,name:null,source:'orion-deck-gate',referrer:document.referrer||null,user_agent:navigator.userAgent})
-        }).then(function(){setPending('Thanks \u2014 your request to view the deck has been sent for approval. You\u2019ll get access once approved.');},
+        }).then(function(){setPending('Thanks, your request to view the deck has been sent for approval. You\u2019ll get access once approved.');},
                 function(){err.textContent='Something went wrong. Please try again in a moment.';if(btn){btn.disabled=false;btn.textContent='View deck \u2192';}});
       }
     },function(){err.textContent='Something went wrong checking access. Please try again in a moment.';if(btn){btn.disabled=false;btn.textContent='View deck \u2192';}});
