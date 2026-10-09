@@ -548,12 +548,12 @@ html[data-mode="portrait"] .conf{font-size:13px;line-height:1.5;text-align:cente
 html[data-mode="portrait"] .foot{font-size:13px;line-height:1.5;color:var(--muted);margin-top:6px}
 html[data-mode="portrait"] .ic{width:22px;height:22px}
 /* 1 cover */
-html[data-mode="portrait"] .s-cover{justify-content:center;justify-content:safe center;text-align:center}
-html[data-mode="portrait"] .s-cover .cover{order:1;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;margin-top:auto;margin-bottom:auto}
+html[data-mode="portrait"] .slide.s-cover.active{display:grid;grid-template-rows:1fr;grid-template-columns:1fr;text-align:center}
+html[data-mode="portrait"] .s-cover .cover{grid-row:1;grid-column:1;align-self:center;justify-self:center;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;width:100%}
 html[data-mode="portrait"] .s-cover .lockup{width:min(72%,300px);height:auto}
 html[data-mode="portrait"] .s-cover .tagline{font-size:34px;line-height:1.12;font-weight:300}
 html[data-mode="portrait"] .s-cover .cover-kind{order:3;font-size:22px;line-height:1.35;text-align:center;max-width:300px;text-wrap:balance}
-html[data-mode="portrait"] .s-cover .cover-foot{order:4;font-size:13px;line-height:1.5;text-align:center;color:var(--muted);max-width:280px;text-wrap:balance;margin:auto auto 0;padding-top:14px}
+html[data-mode="portrait"] .s-cover .cover-foot{grid-row:1;grid-column:1;align-self:end;justify-self:center;font-size:13px;line-height:1.5;text-align:center;color:var(--muted);max-width:280px;text-wrap:balance;padding-bottom:14px}
 /* 2 mission */
 html[data-mode="portrait"] .s-open .hero{margin-top:auto}
 html[data-mode="portrait"] .h-hero{font-size:32px;line-height:1.1}
