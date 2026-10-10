@@ -225,6 +225,7 @@ html[data-mode="deck"] .creds .cap{font-size:20px;line-height:24px}
 html[data-mode="deck"] .terms{left:120px;top:340px;width:640px;display:flex;flex-direction:column;gap:28px;position:absolute}
 html[data-mode="deck"] .terms-veil{inset:-16px}
 html[data-mode="deck"] .terms-veil span{font-size:26px;letter-spacing:.06em;transform:rotate(-16deg)}
+html[data-mode="deck"] .value-veil{inset:-8px -14px}
 html[data-mode="deck"] .terms b{font-size:44px;line-height:1.1;margin-top:8px}
 html[data-mode="deck"] .terms .big{font-size:88px;line-height:1}
 html[data-mode="deck"] .terms .d{font-size:20px;line-height:1.4;margin-top:8px}
@@ -350,8 +351,10 @@ html[data-mode="portrait"] .cover-foot .footseg+.footseg,html[data-mode="portrai
 .terms .big{color:var(--purple)}
 .terms > div{display:flex;flex-direction:column}
 .terms b{display:block}
-.terms-veil{position:absolute;display:flex;align-items:center;justify-content:center;background:rgba(6,14,25,.32);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);border-radius:14px;overflow:hidden;z-index:2}
+.terms-veil{position:absolute;display:flex;align-items:center;justify-content:center;background:rgba(6,14,25,.14);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);border-radius:14px;overflow:hidden;z-index:2}
 .terms-veil span{color:var(--green);font-family:var(--mono);text-transform:uppercase;white-space:nowrap;font-weight:400}
+.fig-wrap{position:relative;display:inline-block}
+.value-veil{position:absolute;display:block;background:rgba(6,14,25,.5);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:8px;z-index:1}
 .uop .row{display:flex;justify-content:space-between;gap:24px}
 .uop .amt{color:var(--muted);white-space:nowrap}
 .uop .track{background:var(--faint);border-radius:999px;overflow:hidden}
@@ -659,6 +662,7 @@ html[data-mode="portrait"] .creds .inv{font-size:15px;line-height:1.45}
 html[data-mode="portrait"] .terms{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative}
 html[data-mode="portrait"] .terms-veil{inset:-10px}
 html[data-mode="portrait"] .terms-veil span{font-size:14px;letter-spacing:.05em;transform:rotate(-16deg)}
+html[data-mode="portrait"] .value-veil{inset:-5px -8px}
 html[data-mode="portrait"] .terms .big{font-size:48px;line-height:1}
 html[data-mode="portrait"] .terms b{font-size:22px;line-height:1.15;margin-top:4px}
 html[data-mode="portrait"] .uop-text{font-size:20px;line-height:1.35;margin-top:6px}
@@ -1114,8 +1118,8 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
     <h2>Product Company Fundraise</h2>
   </header>
   <div class="terms">
-    <div><p class="cap">Raise</p><b class="big">$500K</b></div>
-    <div><p class="cap">Terms</p><b>$5M post SAFE Note</b></div>
+    <div><p class="cap">Raise</p><span class="fig-wrap"><b class="big">$500K</b><span class="value-veil"></span></span></div>
+    <div><p class="cap">Terms</p><span class="fig-wrap"><b>$5M post SAFE Note</b><span class="value-veil"></span></span></div>
     <div class="terms-veil"><span>Socializing Terms Now</span></div>
   </div>
   <div class="uop">
