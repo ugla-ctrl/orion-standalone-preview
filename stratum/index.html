@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Orion | Private Proposal</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060E19; --shade:#1E1C47; --teal:#006865; --ink:#FCFAF7;
+  --muted:rgba(252,250,247,.68); --faint:rgba(252,250,247,.14);
+  --purple:#7264F1; --turq:#50E3FF; --green:#80FCA7;
+  --sans:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);min-height:100%}
+body{font-family:var(--sans);font-weight:300;color:var(--ink);-webkit-font-smoothing:antialiased}
+.muted{color:var(--muted)}
+b{font-weight:500}
+
+/* ---------- Gate screen ---------- */
+#gate{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(900px 600px at 100% 0%, rgba(114,100,241,.18), transparent 70%),radial-gradient(800px 600px at 0% 100%, rgba(0,104,101,.20), transparent 70%),var(--bg);z-index:10;padding:24px}
+#gate .card{width:100%;max-width:420px;text-align:center}
+#gate img.logo{height:28px;margin-bottom:36px}
+#gate h1{font-size:22px;font-weight:400;margin:0 0 10px}
+#gate p.sub{font-size:15px;color:var(--muted);margin:0 0 28px;line-height:1.5}
+#gate input{width:100%;background:rgba(252,250,247,.06);border:1.5px solid var(--faint);border-radius:10px;padding:14px 16px;color:var(--ink);font-size:16px;font-family:var(--mono);text-align:center;letter-spacing:.02em}
+#gate input:focus{outline:none;border-color:var(--turq)}
+#gate button{margin-top:16px;width:100%;background:var(--purple);border:none;border-radius:10px;padding:14px 16px;color:var(--ink);font-size:15px;font-family:var(--sans);cursor:pointer}
+#gate button:hover{filter:brightness(1.1)}
+#gate .err{color:#ff8a8a;font-size:14px;margin-top:14px;min-height:20px}
+#gate .hint{color:var(--muted);font-size:13px;margin-top:28px}
+#gate .hint a{color:var(--green)}
+
+/* ---------- Content (same as rendered one-pager) ---------- */
+#content{display:none;width:100%;overflow-x:auto}
+.page{position:relative;width:1920px;max-width:none;background:var(--bg);color:var(--ink);padding:70px 100px 60px;margin:0 auto}
+.page::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 600px at 100% 0%, rgba(114,100,241,.18), transparent 70%),
+    radial-gradient(800px 600px at 0% 100%, rgba(0,104,101,.20), transparent 70%),
+    radial-gradient(600px 500px at 60% -10%, rgba(80,227,255,.10), transparent 70%);
+}
+.grain{position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-size:200px 200px;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
+.content-inner{position:relative;z-index:1}
+h1,h2,h3,p,ul,li{margin:0;padding:0}
+ul{list-style:none}
+.eyebrow,.cap{font-family:var(--mono);text-transform:uppercase;letter-spacing:.02em}
+.eyebrow{color:var(--green);font-size:19px}
+.cap{color:var(--muted);font-size:17px}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:46px}
+.logo{height:30px;width:auto;display:block}
+.conf-top{font-family:var(--mono);font-size:17px;color:var(--muted);text-align:right;line-height:1.5}
+.conf-top b{color:var(--green);font-weight:400}
+.hero-row{display:flex;gap:48px;align-items:flex-start;margin-bottom:40px}
+.hero{flex:1 1 auto;min-width:0;padding-top:6px}
+.hero h1{font-size:54px;line-height:1.1;font-weight:400;letter-spacing:-0.01em}
+.hero .sub{font-size:22px;line-height:1.45;color:var(--muted);margin-top:18px;max-width:960px}
+.offer{flex:0 0 620px;background:rgba(30,28,71,.55);border:1.5px solid rgba(114,100,241,.5);border-radius:18px;padding:28px 34px}
+.offer .eyebrow{margin-bottom:10px}
+.offer h2{font-size:27px;line-height:1.3;font-weight:400}
+.offer .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:20px;padding-top:18px;border-top:1px solid var(--faint)}
+.offer .item b{display:block;font-size:27px;color:var(--purple);line-height:1.15}
+.offer .item span{display:block;font-size:15px;color:var(--muted);margin-top:4px;line-height:1.35}
+.rule{height:1px;background:var(--faint);margin-bottom:40px}
+.cols{display:grid;grid-template-columns:560px 560px 1fr;column-gap:42px;margin-bottom:40px}
+.col h3{font-size:21px;font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.3}
+.col p{font-size:16px;line-height:1.5;color:var(--muted)}
+.col .stat-row{display:flex;gap:26px;margin-top:18px}
+.col .stat b{display:block;font-size:32px;color:var(--ink);font-weight:400}
+.col .stat span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
+.pains{margin-top:10px}
+.pains li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--ink);padding:9px 0;border-top:1px solid var(--faint)}
+.pains li:first-child{border-top:none}
+.pains .dot{width:6px;height:6px;border-radius:50%;background:var(--green);margin-top:7px;flex:none}
+.cards li{padding-top:14px;border-top:2px solid var(--turq);margin-top:14px}
+.cards li:first-child{margin-top:0}
+.cards b{display:block;font-size:18px;font-weight:400}
+.cards span{display:block;font-size:15px;color:var(--muted);margin-top:3px;line-height:1.4}
+.live-feats{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px;margin-top:16px}
+.live-feats li{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--ink)}
+.live-feats .ck{color:var(--green);flex:none}
+.milestones{padding-top:22px;border-top:1px solid var(--faint);margin-bottom:34px}
+.milestones .cap{margin-bottom:16px;display:block}
+.ms-row{display:grid;grid-template-columns:repeat(5,1fr);column-gap:30px}
+.ms-row li .ms-date{display:block;color:var(--green);font-family:var(--mono);font-size:15px;text-transform:uppercase}
+.ms-row li p{font-size:15px;line-height:1.4;margin-top:6px;color:var(--ink)}
+.teamline{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-top:20px;border-top:1px solid var(--faint);margin-bottom:34px}
+.teamline .founder b{font-size:18px;display:block}
+.teamline .founder span{font-size:14px;color:var(--green);display:block;margin-top:2px}
+.teamline .fstats{display:flex;gap:26px;margin-top:12px;flex-wrap:wrap}
+.teamline .fstats div b{font-size:18px;display:block}
+.teamline .fstats div span{font-size:12px;color:var(--muted);display:block;margin-top:2px;max-width:160px}
+.teamline .advisors{font-size:13px;color:var(--muted);max-width:560px;text-align:right;line-height:1.5;flex:0 0 auto}
+.teamline .advisors b{color:var(--ink);font-weight:400;display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;font-family:var(--mono);letter-spacing:.02em}
+.foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:14px;color:var(--muted);padding-top:16px;border-top:1px solid var(--faint)}
+.foot a{color:var(--green);text-decoration:none}
+@media (max-width:700px){
+  .page{padding:36px 24px 40px}
+}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="card">
+    <img class="logo" src="../media/logos/orion-wordmark.png" alt="Orion">
+    <h1>Private proposal</h1>
+    <p class="sub">This page is for Stratum Capital only.<br>Enter the password you were given to continue.</p>
+    <input id="pw" type="password" autocomplete="off" placeholder="Password" autofocus>
+    <button id="go">Unlock</button>
+    <p class="err" id="err"></p>
+    <p class="hint">Trouble getting in? Contact <a href="mailto:mitch@imxp.org">mitch@imxp.org</a>.</p>
+  </div>
+</div>
+
+<div id="content">
+  <div class="page">
+    <div class="grain"></div>
+    <div class="content-inner">
+      <div class="topbar">
+        <img class="logo" src="../media/logos/orion-wordmark.png" alt="Orion">
+        <div class="conf-top">Confidential &middot; <b>Investment Proposal</b><br>Prepared exclusively for Stratum Capital &middot; October 2026</div>
+      </div>
+
+      <div class="hero-row">
+        <div class="hero">
+          <h1>Orion &mdash; the agentic co-pilot for live event production, built inside IMXP.</h1>
+          <p class="sub">Orion turns the decisions, demand signals and outcomes from IMXP's own events into a system that plans the next one better: run events&nbsp;&rarr; capture decisions and outcomes&nbsp;&rarr; apply that knowledge forward. We're inviting Stratum Capital into Orion's pre-seed round.</p>
+        </div>
+        <div class="offer">
+          <p class="eyebrow">The offer</p>
+          <h2>Up to <b style="color:var(--green)">$500,000</b> on a SAFE at a <b style="color:var(--green)">$5,000,000</b> post-money cap</h2>
+          <div class="grid">
+            <div class="item"><b>$500K</b><span>Available allocation for Stratum Capital</span></div>
+            <div class="item"><b>$5M</b><span>Post-money valuation cap, SAFE note</span></div>
+            <div class="item"><b>IMXP Product, Inc.</b><span>Delaware C-corp, Orion's issuing entity</span></div>
+            <div class="item"><b>Oct 2026</b><span>Round open now &middot; rolling close</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule"></div>
+
+      <div class="cols">
+        <div class="col">
+          <p class="eyebrow" style="margin-bottom:14px">The problem</p>
+          <h3>Event commitments lock in before the information does</h3>
+          <p>Iceland Eclipse exposed it directly: big calls on housing, content and marketing get made on forecasts, and the real numbers only show up after the money is already spent.</p>
+          <ul class="pains">
+            <li><span class="dot"></span>Demand is a guess until tickets are already selling</li>
+            <li><span class="dot"></span>Each event's plan starts from zero, not the last one's results</li>
+            <li><span class="dot"></span>What the crew learns on-site leaves with them</li>
+          </ul>
+        </div>
+        <div class="col">
+          <p class="eyebrow" style="margin-bottom:14px">The solution</p>
+          <h3>Orion is the end-to-end copilot for event production</h3>
+          <ul class="cards">
+            <li><b>Test demand first</b><span>Pre-sales and signals prove the event before the big spend.</span></li>
+            <li><b>Plan from real numbers</b><span>Real lead times, real costs, each team's work for today.</span></li>
+            <li><b>Keep what crews learn</b><span>Every decision saved with its reason and outcome, carried to the next event.</span></li>
+          </ul>
+        </div>
+        <div class="col">
+          <p class="eyebrow" style="margin-bottom:14px">Traction &mdash; already running</p>
+          <h3>Live at Iceland Eclipse 2026</h3>
+          <p>4,200 participants from 75+ countries &middot; supporting <b style="color:var(--ink)">$6M</b> in event revenue.</p>
+          <div class="stat-row">
+            <div class="stat"><b>120+</b><span>Decisions on record</span></div>
+            <div class="stat"><b>2 of 4</b><span>2027 events vetted by Orion</span></div>
+          </div>
+          <ul class="live-feats">
+            <li><span class="ck">&#10003;</span>Support inbox</li>
+            <li><span class="ck">&#10003;</span>Slack approvals</li>
+            <li><span class="ck">&#10003;</span>Meeting capture</li>
+            <li><span class="ck">&#10003;</span>Decision log</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="milestones">
+        <span class="cap">Use of proceeds &amp; milestones &mdash; 10 months of platform development &amp; model training toward full v1 deployment</span>
+        <ul class="ms-row">
+          <li><span class="ms-date">Dec 2026</span><p>Planning go/no-go gate</p></li>
+          <li><span class="ms-date">Mar 2027</span><p>Orion beta at Coherence, Austin</p></li>
+          <li><span class="ms-date">May 2027</span><p>Orion release at Atomika, Roswell</p></li>
+          <li><span class="ms-date">Aug 2027</span><p>Full lifecycle at Egypt Eclipse, Luxor</p></li>
+          <li><span class="ms-date">After Egypt</span><p>Decision point: scale inside IMXP or offer Orion externally</p></li>
+        </ul>
+      </div>
+
+      <div class="teamline">
+        <div class="founder">
+          <b>Mitch Morales &middot; Founder &amp; CEO</b><span>Building Orion as IMXP's own production backbone first</span>
+          <div class="fstats">
+            <div><b>$20M</b><span>Texas Eclipse, 38K people</span></div>
+            <div><b>20K/day</b><span>Euphoria attendance</span></div>
+            <div><b>360training.com</b><span>Revenue growth (exited)</span></div>
+            <div><b>$10M</b><span>Fund deployed w/ Unknown Ventures</span></div>
+          </div>
+        </div>
+        <div class="advisors">
+          <b>Investors &amp; advisors</b>
+          Chris Boshuizen &middot; Whitney Kroenke Silverstein &middot; JT Marino &middot; Rav&eacute; Mehta &middot; Josh Whiton &middot; Ravi Muti
+        </div>
+      </div>
+
+      <div class="foot">
+        <span>Investment in IMXP Product, Inc. (DE C-corp), a wholly owned subsidiary of Immersive Experiences, LLC.</span>
+        <span>Contact: Mitch Morales &middot; <a href="mailto:mitch@imxp.org">mitch@imxp.org</a></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var STORE_KEY = 'orion_stratum_unlocked';
+  var HASH = 'c61658055b8c4578386191ee9302bbaaf15dea5314e4342cce9290057477d9b0';
+
+  function toHex(buf){
+    return Array.prototype.map.call(new Uint8Array(buf), function(b){ return ('0'+b.toString(16)).slice(-2); }).join('');
+  }
+  function sha256(str){
+    var enc = new TextEncoder().encode(str);
+    return crypto.subtle.digest('SHA-256', enc).then(toHex);
+  }
+  function unlock(){
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+  function tryUnlock(pw){
+    return sha256(pw).then(function(h){
+      if (h === HASH) {
+        try { sessionStorage.setItem(STORE_KEY, '1'); } catch(e){}
+        unlock();
+        return true;
+      }
+      return false;
+    });
+  }
+  // Returning visitor this session
+  try {
+    if (sessionStorage.getItem(STORE_KEY) === '1') { unlock(); }
+  } catch(e){}
+
+  var btn = document.getElementById('go');
+  var input = document.getElementById('pw');
+  var err = document.getElementById('err');
+  function attempt(){
+    var pw = input.value || '';
+    if (!pw) return;
+    tryUnlock(pw).then(function(ok){
+      if (!ok) {
+        err.textContent = 'That password did not work. Please check and try again.';
+        input.value = '';
+        input.focus();
+      }
+    });
+  }
+  btn.addEventListener('click', attempt);
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') attempt(); });
+})();
+</script>
+</body>
+</html>
