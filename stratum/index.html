@@ -101,8 +101,39 @@ ul{list-style:none}
 .teamline .advisors b{color:var(--ink);font-weight:400;display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;font-family:var(--mono);letter-spacing:.02em}
 .foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:14px;color:var(--muted);padding-top:16px;border-top:1px solid var(--faint)}
 .foot a{color:var(--green);text-decoration:none}
-@media (max-width:700px){
-  .page{padding:36px 24px 40px}
+@media (max-width:960px){
+  .page{width:100%;padding:40px 22px 44px}
+  .topbar{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:28px}
+  .logo{height:22px}
+  .conf-top{text-align:left;font-size:13px}
+  .hero-row{flex-direction:column;gap:22px;margin-bottom:28px}
+  .hero{padding-top:0}
+  .hero h1{font-size:30px;line-height:1.18}
+  .hero .sub{font-size:16px;margin-top:12px;max-width:none}
+  .offer{flex:none;width:100%;padding:20px 22px}
+  .offer h2{font-size:19px}
+  .offer .grid{grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:16px;padding-top:14px}
+  .offer .item b{font-size:20px}
+  .offer .item span{font-size:13px}
+  .rule{margin-bottom:28px}
+  .cols{grid-template-columns:1fr;column-gap:0;row-gap:30px;margin-bottom:28px}
+  .col h3{font-size:19px}
+  .col p{font-size:15px}
+  .col .stat b{font-size:26px}
+  .live-feats{grid-template-columns:1fr 1fr}
+  .milestones{margin-bottom:28px}
+  .ms-row{grid-template-columns:1fr;row-gap:18px}
+  .teamline{flex-direction:column;align-items:flex-start;gap:22px;margin-bottom:28px}
+  .teamline .fstats{gap:20px}
+  .teamline .advisors{text-align:left;max-width:none}
+  .foot{flex-direction:column;align-items:flex-start;gap:6px;font-size:12px}
+}
+@media (max-width:480px){
+  .hero h1{font-size:25px}
+  .offer .grid{grid-template-columns:1fr}
+  .live-feats{grid-template-columns:1fr}
+  .eyebrow{font-size:16px}
+  .cap{font-size:14px}
 }
 </style>
 </head>
