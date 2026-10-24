@@ -287,6 +287,54 @@ html[data-mode="deck"] .ms{left:120px;top:740px;width:1680px;display:grid;grid-t
 html[data-mode="deck"] .ms-date{font-size:20px}
 html[data-mode="deck"] .ms p{font-size:24px;line-height:1.4;margin-top:8px}
 
+
+/* business model */
+html[data-mode="deck"] .s-model .hd,html[data-mode="deck"] .s-proj .hd,html[data-mode="deck"] .s-matrix .hd{left:120px;top:120px;width:1680px}
+html[data-mode="deck"] .bm-fees{left:120px;top:330px;width:1680px;display:flex;align-items:stretch;gap:24px}
+html[data-mode="deck"] .bm-fee{flex:1;padding:32px 36px}
+html[data-mode="deck"] .bm-fee .cap{font-size:18px}
+html[data-mode="deck"] .bm-fee b{display:block;font-size:56px;line-height:1.1;margin-top:12px;font-weight:400}
+html[data-mode="deck"] .bm-fee .d{display:block;font-size:22px;line-height:1.35;margin-top:8px}
+html[data-mode="deck"] .bm-plus{display:flex;align-items:center;font-size:48px;color:var(--muted)}
+html[data-mode="deck"] .bm-proof{left:120px;top:580px;width:1680px;padding:24px 36px}
+html[data-mode="deck"] .bm-proof .cap{font-size:18px}
+html[data-mode="deck"] .bm-proof-row{display:flex;gap:56px;margin-top:10px;align-items:baseline}
+html[data-mode="deck"] .bm-proof-row > div{white-space:nowrap}
+html[data-mode="deck"] .bm-proof-row b{font-size:40px;font-weight:400;margin-right:12px}
+html[data-mode="deck"] .bm-proof-row .d{font-size:20px}
+html[data-mode="deck"] .bm-path{left:120px;top:760px;width:1680px;display:grid;grid-template-columns:repeat(3,1fr);column-gap:40px;padding-top:22px;border-top:1px solid var(--faint)}
+html[data-mode="deck"] .bm-path .ms-date{font-size:18px}
+html[data-mode="deck"] .bm-path b{display:block;font-size:28px;font-weight:400;margin-top:6px}
+html[data-mode="deck"] .bm-path p{font-size:20px;line-height:1.4;margin-top:4px}
+html[data-mode="deck"] .s-model .foot,html[data-mode="deck"] .s-proj .foot,html[data-mode="deck"] .s-matrix .foot{bottom:96px;font-size:17px}
+/* projections */
+html[data-mode="deck"] .pj-chart{left:120px;top:330px;width:820px;height:560px}
+html[data-mode="deck"] .pj-col{width:180px}
+html[data-mode="deck"] .pj-tot{font-size:30px;margin-bottom:10px}
+html[data-mode="deck"] .pj-bar{height:400px}
+html[data-mode="deck"] .pj-yr{font-size:20px;margin-top:12px}
+html[data-mode="deck"] .pj-key{font-size:18px;gap:28px}
+html[data-mode="deck"] .pj-key i{width:16px;height:16px}
+html[data-mode="deck"] .pj-table{left:1020px;top:340px;width:780px;font-size:24px}
+html[data-mode="deck"] .pj-table td,html[data-mode="deck"] .pj-table th{padding:14px 0}
+html[data-mode="deck"] .pj-table th{font-size:18px}
+html[data-mode="deck"] .pj-note{left:1020px;top:790px;width:780px;font-size:20px;line-height:1.4}
+/* appendix matrix */
+html[data-mode="deck"] .mx-wrap{left:120px;top:290px;width:1680px}
+html[data-mode="deck"] .mx{font-size:22px}
+html[data-mode="deck"] .mx th{font-size:16px;padding:0 10px 14px}
+html[data-mode="deck"] .mx td{padding:11px 10px}
+html[data-mode="deck"] .mx .mx-t{font-size:18px}
+html[data-mode="deck"] .mx-key{left:120px;top:900px;width:1680px;font-size:17px}
+/* fundraise uop list */
+html[data-mode="deck"] .uop-list li{margin-top:14px}
+html[data-mode="deck"] .s-fund .uop .lab,html[data-mode="deck"] .s-fund .uop .amt{font-size:21px;line-height:1.3}
+html[data-mode="deck"] .s-fund .uop .track{height:10px;margin-top:8px}
+html[data-mode="deck"] .s-fund .ms{top:770px}
+html[data-mode="deck"] .s-fund .foot{bottom:96px;font-size:17px}
+html[data-mode="deck"] .s-fund .terms{gap:30px}
+html[data-mode="deck"] .s-fund .terms b:not(.big){font-size:38px}
+
 /* 10 close */
 html[data-mode="deck"] .close{left:0;right:0;top:0;height:1000px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 html[data-mode="deck"] .close h2{font-size:80px}
@@ -449,6 +497,45 @@ html[data-mode="portrait"] .cover-foot .footseg+.footseg,html[data-mode="portrai
 .terms-veil span{color:var(--green);font-family:var(--mono);text-transform:uppercase;white-space:nowrap;font-weight:400}
 .fig-wrap{position:relative;display:inline-block}
 .value-veil{position:absolute;display:block;background:rgba(6,14,25,.5);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-radius:8px;z-index:1}
+
+.s-model p,.s-model .d,.s-proj .pj-note,.s-proj .foot,.s-fund .foot,.s-fund .ms p,.s-fund .lab,.s-matrix .foot,.s-matrix .mx-key,.cl-panel-list span,.cl-panel-list b,.s-compete .foot{text-wrap:pretty}
+.cl-mark.cl-txt{color:var(--bg);font-family:var(--mono);font-weight:500;font-size:14px}
+.cl-dot.lbl-l:not(.cl-orion){transform:translateX(-100%)}
+.cl-dot.cl-near .cl-mark{box-shadow:0 0 0 3px rgba(80,227,255,.35)}
+.bm-fee,.bm-proof{background:rgba(252,250,247,.05);border:1px solid var(--faint);border-radius:16px}
+.bm-fee .cap,.bm-proof .cap{color:var(--green)}
+.bm-fee .d,.bm-proof .d,.bm-path p{color:var(--muted)}
+.bm-proof-row .bm-hi b{color:var(--green)}
+.bm-path{list-style:none;padding:0;margin:0}
+.pj-chart{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-around}
+.pj-col{display:flex;flex-direction:column;align-items:center}
+.pj-bar{width:100%;display:flex;flex-direction:column;justify-content:flex-end;border-bottom:1px solid var(--faint)}
+.pj-seg{display:block;width:100%}
+.pj-seg.ev,.pj-key .ev{background:var(--purple)}
+.pj-seg.pf,.pj-key .pf{background:var(--teal)}
+.pj-seg.lt,.pj-key .lt{background:var(--green)}
+.pj-seg:first-child{border-radius:6px 6px 0 0}
+.pj-tot{color:var(--ink);margin:0}
+.pj-yr{font-family:var(--mono);color:var(--muted);margin:0}
+.pj-key{list-style:none;padding:0;margin:20px 0 0;width:100%;display:flex;justify-content:center;color:var(--muted)}
+.pj-key li{display:flex;align-items:center;gap:8px}
+.pj-key i{display:inline-block;border-radius:3px}
+.pj-table,.mx{border-collapse:collapse;color:var(--ink)}
+.pj-table th,.mx th{font-family:var(--mono);text-transform:uppercase;font-weight:400;color:var(--muted);text-align:right}
+.pj-table td{text-align:right;border-top:1px solid var(--faint)}
+.pj-table td:first-child,.pj-table th:first-child{text-align:left;color:var(--muted)}
+.pj-table .pos{color:var(--green)}
+.pj-note{color:var(--muted)}
+.mx{width:100%}
+.mx th,.mx td{text-align:center;border-top:1px solid var(--faint)}
+.mx thead th{border-top:0}
+.mx .mx-name,.mx .mx-t{text-align:left}
+.mx .mx-t{color:var(--muted)}
+.mx-i{display:inline-block;width:.7em;height:.7em;border-radius:50%;border:2px solid var(--green);vertical-align:middle}.mx-f{background:var(--green)}.mx-p{background:linear-gradient(90deg,var(--green) 50%,transparent 50%)}.mx-n{color:rgba(252,250,247,.3)}
+.mx tr.mx-orion td{background:rgba(114,100,241,.18)}
+.mx-key{color:var(--muted)}
+.uop-list{list-style:none;padding:0;margin:0}
+
 .uop .row{display:flex;justify-content:space-between;gap:24px}
 .uop .amt{color:var(--muted);white-space:nowrap}
 .uop .track{background:var(--faint);border-radius:999px;overflow:hidden}
@@ -807,6 +894,49 @@ html[data-mode="portrait"] .close .ccard b{font-size:22px}
 html[data-mode="portrait"] .close .ccard .role{font-size:13px;margin-top:4px}
 html[data-mode="portrait"] .close .ccard a{font-size:17px;margin-top:8px}
 html[data-mode="portrait"] .photo-credit{font-size:13px;text-align:center;color:var(--muted);opacity:.7}
+
+html[data-mode="portrait"] .bm-fees{display:flex;flex-direction:column;gap:10px}
+html[data-mode="portrait"] .bm-plus{display:none}
+html[data-mode="portrait"] .bm-fee,html[data-mode="portrait"] .bm-proof{padding:16px 18px}
+html[data-mode="portrait"] .bm-fee .cap,html[data-mode="portrait"] .bm-proof .cap{font-size:12px}
+html[data-mode="portrait"] .bm-fee b{display:block;font-size:28px;font-weight:400;margin-top:4px}
+html[data-mode="portrait"] .bm-fee .d{display:block;font-size:14px;margin-top:2px}
+html[data-mode="portrait"] .bm-proof-row{display:grid;gap:8px;margin-top:8px}
+html[data-mode="portrait"] .bm-proof-row b{font-size:24px;font-weight:400;margin-right:8px}
+html[data-mode="portrait"] .bm-proof-row .d{font-size:14px}
+html[data-mode="portrait"] .bm-path{display:grid;gap:14px;padding-top:14px;border-top:1px solid var(--faint)}
+html[data-mode="portrait"] .bm-path .ms-date{font-size:12px}
+html[data-mode="portrait"] .bm-path b{display:block;font-size:18px;font-weight:400}
+html[data-mode="portrait"] .bm-path p{font-size:14px;line-height:1.4;margin-top:2px}
+html[data-mode="portrait"] .pj-chart{height:300px}
+html[data-mode="portrait"] .pj-col{width:28%;height:250px;justify-content:flex-end}
+html[data-mode="portrait"] .pj-bar{height:200px}
+html[data-mode="portrait"] .pj-tot{font-size:17px;margin-bottom:6px}
+html[data-mode="portrait"] .pj-yr{font-size:13px;margin-top:6px}
+html[data-mode="portrait"] .pj-key{font-size:12px;gap:12px;flex-wrap:wrap}
+html[data-mode="portrait"] .pj-key i{width:10px;height:10px}
+html[data-mode="portrait"] .pj-table{width:100%;font-size:13px}
+html[data-mode="portrait"] .pj-table td+td,html[data-mode="portrait"] .pj-table th+th{padding-left:10px;white-space:nowrap}
+html[data-mode="portrait"] .pj-table td,html[data-mode="portrait"] .pj-table th{padding:8px 0}
+html[data-mode="portrait"] .pj-table th{font-size:12px}
+html[data-mode="portrait"] .pj-note{font-size:14px;line-height:1.45}
+html[data-mode="portrait"] .mx-wrap{overflow-x:auto}
+html[data-mode="portrait"] .mx{font-size:13px}
+html[data-mode="portrait"] .mx th:nth-child(n+7),html[data-mode="portrait"] .mx td:nth-child(n+7){display:none}
+html[data-mode="portrait"] .mx th{font-size:9px!important;padding:0 2px 8px!important}
+html[data-mode="portrait"] .mx th{font-size:11px;padding:0 6px 8px}
+html[data-mode="portrait"] .mx td{padding:7px 6px}
+html[data-mode="portrait"] .mx .mx-t{font-size:12px}
+html[data-mode="portrait"] .mx-key{font-size:12px}
+html[data-mode="portrait"] .uop-list li{margin-top:12px}
+html[data-mode="portrait"] .s-fund .terms{grid-template-columns:1fr;gap:10px}
+html[data-mode="portrait"] .cl-orion-pill{width:72px!important;height:30px!important;padding:0 8px!important}
+html[data-mode="portrait"] .cl-orion-pill img{height:13px!important}
+html[data-mode="portrait"] .cl-mark.cl-txt{font-size:9px}
+html[data-mode="portrait"] .uop .lab,html[data-mode="portrait"] .uop .amt{font-size:14px}
+html[data-mode="portrait"] .uop .track{height:8px;margin-top:6px}
+html[data-mode="portrait"] .s-model .shade,html[data-mode="portrait"] .s-proj .shade{background:none}
+
 /* navigation pill */
 html[data-mode="portrait"] .dots{bottom:calc(12px + env(safe-area-inset-bottom,0px));padding:4px 6px;background:rgba(6,14,25,.72);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(252,250,247,.14);border-radius:999px}
 html[data-mode="portrait"] .dots .dot{width:28px;height:40px}
@@ -1019,7 +1149,7 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
     </div>
   </div>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">02 / 12</p>
+  <p class="pnum">02 / 15</p>
 </section>
 
 <!-- 3 MARKET -->
@@ -1071,7 +1201,7 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
   <p class="deals"><span class="lx">Recent deals: KKR bought Superstruct's 80+ festivals (~€1.3B) · Fever, owner of DICE, raised at a reported ~$5.2B valuation · Penske took full control of SXSW.</span><span class="sx">Deals: KKR bought Superstruct (~€1.3B) · Fever raised at ~$5.2B · Penske took over SXSW.</span></p>
   <p class="foot"><span class="lx">Sources: McKinsey &amp; Skift (2024) · Goldman Sachs (2025) · Live Nation (2026) · WEF (2025) · Billboard, MBW, TheWrap</span><span class="sx">Sources: McKinsey &amp; Skift · Goldman Sachs · Live Nation · WEF · Billboard · MBW · TheWrap</span></p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">03 / 12</p>
+  <p class="pnum">03 / 15</p>
 </section>
 
 <!-- 4 PROBLEM -->
@@ -1101,7 +1231,7 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
   </div>
   <p class="foot">Source: Live Nation annual filings, Concerts segment, 2025. Costs = revenue minus adjusted operating income.</p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">04 / 12</p>
+  <p class="pnum">04 / 15</p>
 </section>
 
 <!-- 5 SOLUTION -->
@@ -1126,7 +1256,7 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
     <figcaption class="df-cap"><a data-demo-link hidden target="_blank" rel="noopener">Open the demo in a new tab</a><span data-demo-label>Project Orion demo</span></figcaption>
   </figure>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">05 / 12</p>
+  <p class="pnum">05 / 15</p>
 </section>
 
 <!-- 6 TRACTION -->
@@ -1156,7 +1286,7 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
   </div>
   <p class="foot">Source: IMXP, as of Sep 2026.</p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">06 / 12</p>
+  <p class="pnum">06 / 15</p>
 </section>
 
 <!-- 7 VALUE PROPOSITION -->
@@ -1200,25 +1330,57 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
   </div>
   <p class="foot">Code computes the math and the gates. The model judges and drafts. People approve.</p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">07 / 12</p>
+  <p class="pnum">07 / 15</p>
 </section>
 
 <!-- 8 COMPETITIVE ANALYSIS -->
-<section class="slide bg-content s-compete" data-slide="8" aria-label="Competitive analysis">
+<section class="slide bg-content s-model" data-slide="8" aria-label="Business model">
+  <img class="logo-sm" src="media/logos/orion-wordmark.png" alt="Orion">
+  <header class="hd">
+    <p class="eyebrow">Business model</p>
+    <h2>Orion earns on every event it runs</h2>
+    <p class="sub"><span class="line">A license per event, plus a small fee on the money that moves through it.</span></p>
+  </header>
+  <div class="bm-fees">
+    <div class="bm-fee"><p class="cap">License</p><b>$50K to $100K</b><span class="d">per event, per year</span></div>
+    <div class="bm-plus">+</div>
+    <div class="bm-fee"><p class="cap">Revenue fee</p><b>2% to 3%</b><span class="d">of ticket and event revenue</span></div>
+    <div class="bm-plus">+</div>
+    <div class="bm-fee"><p class="cap">Payout fee</p><b>0.5% to 1%</b><span class="d">of vendor and crew payouts</span></div>
+  </div>
+  <div class="bm-proof">
+    <p class="cap">Proof: IMXP's 2027 calendar</p>
+    <div class="bm-proof-row">
+      <div><b>$16.0M</b><span class="d">event revenue</span></div>
+      <div><b>$14.1M</b><span class="d">vendor and crew payouts</span></div>
+      <div class="bm-hi"><b>$0.6M to $1.0M</b><span class="d">Orion revenue from 4 events</span></div>
+    </div>
+  </div>
+  <ol class="bm-path">
+    <li><span class="ms-date">2027</span><b>IMXP events</b><p>Four events under an intercompany license.</p></li>
+    <li><span class="ms-date">2028</span><b>Partner festivals</b><p>About $150K a year each, deployed by our field team.</p></li>
+    <li><span class="ms-date">2029</span><b>Long tail</b><p>Self-serve: $99 a month plus a 4% take.</p></li>
+  </ol>
+  <p class="foot">Event revenue and risk stay with the producer. Orion earns only the license and fees. Source: IMXP Cashflow, October 2026; Orion Pro Forma.</p>
+  <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
+  <p class="pnum">08 / 15</p>
+</section>
+
+<!-- 9 COMPETITIVE ANALYSIS -->
+<section class="slide bg-content s-compete" data-slide="9" aria-label="Competitive analysis">
   <img class="logo-sm" src="media/logos/orion-wordmark.png" alt="Orion">
   <header class="hd">
     <p class="eyebrow">Competitive landscape</p>
-    <h2>Only Orion covers idea to live at festival scale.</h2>
-    <p class="cl-subtitle">Right = covers more of the festival lifecycle. Up = built for bigger, more complex events.</p>
+    <h2>Others record the festival. Orion runs it, and remembers.</h2>
+    <p class="cl-subtitle">Right = does more of the work itself. Up = owns more of the production, from go/no-go to post-mortem.</p>
   </header>
   <div class="cl-wrap">
-    <div class="cl-chart" role="img" aria-label="Scatter chart. X axis: lifecycle steps covered, from 1 step to all 5 steps (validate, plan, sell, run, learn). Y axis: biggest event it's built for, from one room or show to multi-day greenfield festival. Orion sits alone in the top right, covering all five steps at festival scale. Competitor tools cluster lower and left, each covering fewer steps or smaller events.">
+    <div class="cl-chart" role="img" aria-label="Scatter chart. X axis: does the work, from system of record to AI assistant to agents that act with approval. Y axis: owns the whole production, from one function to go/no-go through post-mortem. Orion sits top right. Ticket Fairy is the nearest challenger, with agents and festival operations but no validation step or decision memory. Cvent and Notion or monday agents act but are not built for festival production. Momentus, Eventeny, OnePlan, Opendate, Tixr and Prism.fm cover one or a few functions with little or no agent capability.">
       <div class="cl-yaxis-strip">
-        <p class="cl-axis-title-y">Biggest event it's built for</p>
-        <p class="cl-ytick" style="bottom:10%">One room or show</p>
-        <p class="cl-ytick" style="bottom:50%">Large venue or conference</p>
-        <p class="cl-ytick" style="bottom:70%">Multi-day festival</p>
-        <p class="cl-ytick" style="bottom:90%">Multi-day greenfield festival</p>
+        <p class="cl-axis-title-y">Owns the whole production</p>
+        <p class="cl-ytick" style="bottom:10%">One function</p>
+        <p class="cl-ytick" style="bottom:50%">Several functions</p>
+        <p class="cl-ytick" style="bottom:90%">Go/no-go to post-mortem</p>
       </div>
       <div class="cl-plot">
         <div class="cl-axis-l-x"></div>
@@ -1228,92 +1390,90 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
         <div class="cl-tick-x" style="left:90%"></div>
         <div class="cl-tick-y" style="bottom:10%"></div>
         <div class="cl-tick-y" style="bottom:50%"></div>
-        <div class="cl-tick-y" style="bottom:70%"></div>
         <div class="cl-tick-y" style="bottom:90%"></div>
         <div class="cl-dot cl-orion" style="left:88%;bottom:88%">
           <span class="cl-orion-pill"><img src="media/logos/orion-wordmark.png" alt="Orion"></span>
         </div>
-        <div class="cl-dot" style="left:20%;bottom:88%">
-          <span class="cl-mark"><img src="media/logos/oneplan-logo.png" alt=""></span>
-          <span class="cl-name">OnePlan</span>
+        <div class="cl-dot cl-near lbl-l" style="left:73%;bottom:62%">
+          <span class="cl-mark cl-txt">TF</span>
+          <span class="cl-name">Ticket Fairy</span>
         </div>
-        <div class="cl-dot" style="left:18%;bottom:70%">
-          <span class="cl-mark"><img src="media/logos/tixr-logo.png" alt=""></span>
-          <span class="cl-name">Tixr</span>
-        </div>
-        <div class="cl-dot lbl-l" style="left:40%;bottom:66%">
-          <span class="cl-mark"><img src="media/logos/eventeny-logo.png" alt=""></span>
-          <span class="cl-name">Eventeny</span>
-        </div>
-        <div class="cl-dot" style="left:64%;bottom:48%">
-          <span class="cl-mark"><img src="media/logos/momentus-icon.png" alt=""></span>
-          <span class="cl-name">Momentus</span>
-        </div>
-        <div class="cl-dot" style="left:72%;bottom:40%">
+        <div class="cl-dot" style="left:58%;bottom:47%">
           <span class="cl-mark"><img src="media/logos/cvent-logo.png" alt=""></span>
           <span class="cl-name">Cvent</span>
         </div>
-        <div class="cl-dot" style="left:34%;bottom:24%">
+        <div class="cl-dot" style="left:58%;bottom:13%">
+          <span class="cl-mark cl-txt">AI</span>
+          <span class="cl-name">Notion / monday AI</span>
+        </div>
+        <div class="cl-dot" style="left:33%;bottom:34%">
+          <span class="cl-mark"><img src="media/logos/momentus-icon.png" alt=""></span>
+          <span class="cl-name">Momentus</span>
+        </div>
+        <div class="cl-dot" style="left:12%;bottom:46%">
+          <span class="cl-mark"><img src="media/logos/eventeny-logo.png" alt=""></span>
+          <span class="cl-name">Eventeny</span>
+        </div>
+        <div class="cl-dot" style="left:8%;bottom:29%">
+          <span class="cl-mark"><img src="media/logos/oneplan-logo.png" alt=""></span>
+          <span class="cl-name">OnePlan</span>
+        </div>
+        <div class="cl-dot" style="left:31%;bottom:22%">
+          <span class="cl-mark cl-txt">OD</span>
+          <span class="cl-name">Opendate</span>
+        </div>
+        <div class="cl-dot" style="left:17%;bottom:4%">
+          <span class="cl-mark"><img src="media/logos/tixr-logo.png" alt=""></span>
+          <span class="cl-name">Tixr</span>
+        </div>
+        <div class="cl-dot" style="left:5%;bottom:15%">
           <span class="cl-mark"><img src="media/logos/prism-icon.png" alt=""></span>
           <span class="cl-name">Prism.fm</span>
-        </div>
-        <div class="cl-dot" style="left:16%;bottom:26%">
-          <span class="cl-mark"><img src="media/logos/eventbrite-logo.png" alt=""></span>
-          <span class="cl-name">Eventbrite</span>
-        </div>
-        <div class="cl-dot" style="left:28%;bottom:10%">
-          <span class="cl-mark"><img src="media/logos/tripleseat-icon.png" alt=""></span>
-          <span class="cl-name">Tripleseat</span>
         </div>
       </div>
       <div class="cl-xaxis-strip">
         <div class="cl-xtick-row">
-          <p class="cl-xtick" style="left:10%">1 step</p>
-          <p class="cl-xtick" style="left:50%">2 to 4 steps</p>
-          <p class="cl-xtick" style="left:90%">All 5 steps</p>
+          <p class="cl-xtick" style="left:10%">System of record</p>
+          <p class="cl-xtick" style="left:50%">AI assistant</p>
+          <p class="cl-xtick" style="left:90%">Agents that act</p>
         </div>
-        <p class="cl-axis-title-x">Lifecycle steps covered</p>
-        <p class="cl-axis-caption-x">The five steps: Validate, Plan, Sell, Run, Learn.</p>
+        <p class="cl-axis-title-x">Does the work</p>
+        <p class="cl-axis-caption-x">Forms and databases, then Q&amp;A copilots, then agents that take actions with human approval.</p>
       </div>
     </div>
     <div class="cl-panel">
       <p class="cl-panel-eyebrow">What sets Orion apart</p>
       <ul class="cl-panel-list">
         <li>
-          <b>Validate: Go or no-go before the spend.</b>
-          <span class="cl-stage-comp"><i>Prism.fm</i> forecasts artist demand from past box office.</span>
-          <span class="cl-stage-orion">Orion sets kill criteria first, then scores the evidence.</span>
+          <b>Validate: Kill criteria before the spend.</b>
+          <span class="cl-stage-comp"><i>Tixr</i> and <i>Ticket Fairy</i> sell the tickets. None decide whether the event should happen.</span>
+          <span class="cl-stage-orion">Orion sets kill criteria first, then scores pre-sales and costs against them.</span>
         </li>
         <li>
           <b>Plan: Schedules for sites that don't exist yet.</b>
-          <span class="cl-stage-comp"><i>OnePlan</i> maps site layouts and capacity.</span>
+          <span class="cl-stage-comp"><i>OnePlan</i> maps the site.</span>
           <span class="cl-stage-orion">Orion turns the layout into a build schedule, sequenced by dependencies and lead times.</span>
         </li>
         <li>
-          <b>Sell: Pre-sales that feed the decision.</b>
-          <span class="cl-stage-comp"><i>Tixr</i> and <i>Eventbrite</i> sell tickets.</span>
-          <span class="cl-stage-orion">Orion reads pre-sales as evidence for the go/no-go call.</span>
+          <b>Run: Agents working from the plan.</b>
+          <span class="cl-stage-comp"><i>Ticket Fairy</i>'s agents coordinate vendors and settlements.</span>
+          <span class="cl-stage-orion">Orion's agents act from the same record that planned the event, with a person approving every payout.</span>
         </li>
         <li>
-          <b>Run: Live operations from the same record.</b>
-          <span class="cl-stage-comp"><i>Momentus</i> runs venues. <i>Eventeny</i> manages vendors.</span>
-          <span class="cl-stage-orion">Orion runs tasks, vendors, and incidents from the plan that built the event.</span>
-        </li>
-        <li>
-          <b>Learn: Lessons from festivals we run ourselves.</b>
-          <span class="cl-stage-comp"><i>Tripleseat</i> reports on bookings and revenue.</span>
-          <span class="cl-stage-orion">Orion logs every decision and its outcome, so the next event starts smarter.</span>
+          <b>Learn: Decisions linked to outcomes.</b>
+          <span class="cl-stage-comp">Others copy last year's file.</span>
+          <span class="cl-stage-orion">Orion logs every decision and what happened next, so each event starts smarter.</span>
         </li>
       </ul>
     </div>
   </div>
-  <p class="foot">Orion assessment, October 2026, based on public product documentation.</p>
+  <p class="foot">Orion assessment, October 2026, from public product information. Placements are judgments; detail in the appendix.</p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">08 / 12</p>
+  <p class="pnum">09 / 15</p>
 </section>
 
 <!-- 9 ROADMAP -->
-<section class="slide bg-content has-photo s-road" data-slide="9" aria-label="Roadmap">
+<section class="slide bg-content has-photo s-road" data-slide="10" aria-label="Roadmap">
   <img class="bg-photo cine" src="media/photos/roadmap-partners-build.jpg" alt="Build crew constructing Iceland Eclipse infrastructure">
   <div class="shade"></div>
   <div class="grain"></div>
@@ -1351,11 +1511,11 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
   </ul>
   <p class="foot">Beyond 2027: Australasia Eclipse 2028, Apophis 2029, South Africa Eclipse 2030, and the Antarctic Expedition. <span class="horizon"><span class="nw">2035: Watch Earth eclipse the Sun,</span> <span class="nw">from the Moon.</span></span></p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">09 / 12</p>
+  <p class="pnum">10 / 15</p>
 </section>
 
 <!-- 10 TEAM -->
-<section class="slide bg-content has-photo s-team" data-slide="10" aria-label="The team">
+<section class="slide bg-content has-photo s-team" data-slide="11" aria-label="The team">
   <img class="bg-photo cine" src="media/photos/founder-interview.jpg" alt="Mitch Morales being interviewed in the field">
   <div class="shade"></div>
   <div class="grain"></div>
@@ -1385,41 +1545,72 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
     <p class="inv">Chris Boshuizen · Whitney Kroenke Silverstein · JT Marino · Ravé Mehta · Josh Whiton · Ravi Muti</p>
   </div>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">10 / 12</p>
+  <p class="pnum">11 / 15</p>
 </section>
 
 <!-- 11 FUNDRAISE -->
-<section class="slide bg-content has-photo s-fund" data-slide="11" aria-label="Fundraise">
+<section class="slide bg-content s-proj" data-slide="12" aria-label="Projections">
+  <img class="logo-sm" src="media/logos/orion-wordmark.png" alt="Orion">
+  <header class="hd">
+    <p class="eyebrow">Projections</p>
+    <h2>From our own events to the long tail</h2>
+    <p class="sub"><span class="line">IMXP proves it, partner festivals scale it, and self-serve organizers multiply it.</span></p>
+  </header>
+  <div class="pj-chart" role="img" aria-label="Stacked bar chart of Orion revenue: 2027 $1.2M (mostly IMXP events), 2028 $6.2M, 2029 $29.7M (mostly long-tail self-serve).">
+      <div class="pj-col"><p class="pj-tot">$1.2M</p><div class="pj-bar"><span class="pj-seg pf" style="height:0.50%"></span><span class="pj-seg ev" style="height:3.53%"></span></div><p class="pj-yr">2027</p></div>
+      <div class="pj-col"><p class="pj-tot">$6.2M</p><div class="pj-bar"><span class="pj-seg lt" style="height:7.47%"></span><span class="pj-seg pf" style="height:4.94%"></span><span class="pj-seg ev" style="height:8.31%"></span></div><p class="pj-yr">2028</p></div>
+      <div class="pj-col"><p class="pj-tot">$29.7M</p><div class="pj-bar"><span class="pj-seg lt" style="height:72.18%"></span><span class="pj-seg pf" style="height:14.83%"></span><span class="pj-seg ev" style="height:12.95%"></span></div><p class="pj-yr">2029</p></div>
+    <ul class="pj-key"><li><i class="ev"></i>IMXP events</li><li><i class="pf"></i>Partner festivals</li><li><i class="lt"></i>Long tail (self-serve)</li></ul>
+  </div>
+  <table class="pj-table">
+    <thead><tr><th></th><th>2027</th><th>2028</th><th>2029</th></tr></thead>
+    <tbody>
+      <tr><td>Revenue</td><td>$1.2M</td><td>$6.2M</td><td>$29.7M</td></tr>
+      <tr><td>EBITDA</td><td>($2.2M)</td><td>($1.1M)</td><td class="pos">$11.7M</td></tr>
+      <tr><td>Event revenue on Orion</td><td>$25M</td><td>$115M</td><td>$517M</td></tr>
+      <tr><td>Partner festivals</td><td>2</td><td>10</td><td>30</td></tr>
+      <tr><td>Long-tail organizers</td><td>&ndash;</td><td>1,567</td><td>11,520</td></tr>
+      <tr><td>Headcount</td><td>15</td><td>32</td><td>58</td></tr>
+    </tbody>
+  </table>
+  <p class="pj-note">EBITDA positive from Q4 2028. The $5M seed carries the plan, with lowest cash of about $0.8M in Q3 2028.</p>
+  <p class="foot">Orion Pro Forma 2027 to 2029, October 2026. Forward-looking estimates; not a forecast of results.</p>
+  <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
+  <p class="pnum">12 / 15</p>
+</section>
+
+<!-- 13 FUNDRAISE -->
+<section class="slide bg-content has-photo s-fund" data-slide="13" aria-label="Fundraise">
   <img class="bg-photo cine" src="media/photos/fundraise-midnight-sun-tents.jpg" alt="Aerial view of the Iceland Eclipse tented village at golden hour">
   <div class="shade"></div>
   <div class="grain"></div>
   <img class="logo-sm" src="media/logos/orion-wordmark.png" alt="Orion">
   <header class="hd">
     <p class="eyebrow">Fundraise</p>
-    <h2>Orion Product Company Fundraise</h2>
+    <h2>Product Seed Round</h2>
   </header>
   <div class="terms">
-    <div><p class="cap">Raise</p><span class="fig-wrap"><b class="big">$500K</b><span class="value-veil"></span></span></div>
-    <div><p class="cap">Terms</p><span class="fig-wrap"><b>$5M post SAFE Note</b><span class="value-veil"></span></span></div>
-    <div class="terms-veil"><span>Socializing Terms Now</span></div>
+    <div><p class="cap">Raise</p><b class="big">$5M</b></div>
+    <div><p class="cap">Valuation</p><b>$25M post-money</b></div>
+    <div><p class="cap">Instrument</p><b>Series Seed preferred or SAFE</b></div>
   </div>
   <div class="uop">
-    <p class="cap">Use of proceeds</p>
-    <p class="uop-text">12 months of platform development &amp; model training, with the goal of fully deploying v1 of the copilot by August 2027 at Egypt Eclipse.</p>
+    <p class="cap">Use of proceeds, 18 months</p>
+    <ul class="uop-list"><li><div class="row"><span class="lab">Platform engineering</span><span class="amt">$1.70M · 32%</span></div><div class="track"><span class="fill" style="--p:100%"></span></div></li><li><div class="row"><span class="lab">Data science and model training</span><span class="amt">$1.66M · 31%</span></div><div class="track"><span class="fill" style="--p:97%"></span></div></li><li><div class="row"><span class="lab">Leadership</span><span class="amt">$0.68M · 13%</span></div><div class="track"><span class="fill" style="--p:41%"></span></div></li><li><div class="row"><span class="lab">Finance, legal and operations</span><span class="amt">$0.64M · 12%</span></div><div class="track"><span class="fill" style="--p:38%"></span></div></li><li><div class="row"><span class="lab">Field deployment and outside pilots</span><span class="amt">$0.40M · 7%</span></div><div class="track"><span class="fill" style="--p:22%"></span></div></li><li><div class="row"><span class="lab">Hosting and long-tail launch</span><span class="amt">$0.20M · 4%</span></div><div class="track"><span class="fill" style="--p:12%"></span></div></li></ul>
   </div>
   <ol class="ms">
     <li><span class="ms-date">Mar 2027</span><p>Orion beta at Coherence</p></li>
-    <li><span class="ms-date">May 2027</span><p>Orion release at Atomika</p></li>
-    <li><span class="ms-date">Aug 2027</span><p>Full lifecycle at Egypt</p></li>
-    <li><span class="ms-date">After Egypt</span><p>Decision point: scale IMXP or offer Orion</p></li>
+    <li><span class="ms-date">May 2027</span><p>v1.0 and payouts live at Atomika</p></li>
+    <li><span class="ms-date">Aug 2027</span><p>Full lifecycle at Egypt Eclipse</p></li>
+    <li><span class="ms-date">2028</span><p>10 partner festivals, self-serve launch</p></li>
   </ol>
-  <p class="foot">Investment in IMXP Product (DE C-corp), currently a wholly owned subsidiary of Immersive Experiences, LLC.</p>
+  <p class="foot">Investment in IMXP Product Inc. (Delaware C-corp), a subsidiary of Immersive Experiences, LLC. Separate from event risk, with a roll-up right into any combined IMXP company.</p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">11 / 12</p>
+  <p class="pnum">13 / 15</p>
 </section>
 
 <!-- 12 CLOSE -->
-<section class="slide bg-close has-photo s-close" data-slide="12" aria-label="Close">
+<section class="slide bg-close has-photo s-close" data-slide="14" aria-label="Close">
   <img class="bg-photo" src="media/photos/dorothy-space-eclipse.jpg" alt="Total solar eclipse photographed from the stratosphere above Earth's curvature, by The Dorothy Project">
   <div class="shade"></div>
   <img class="logo-sm" src="media/logos/orion-wordmark.png" alt="Orion">
@@ -1429,8 +1620,27 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
     <div class="ccard"><img class="av" src="media/people/mitch-hs.jpg" alt=""><div><b>Mitch Morales</b><span class="role">Founder &amp; CEO of IMXP</span><a href="mailto:mitch@imxp.org">mitch@imxp.org</a></div></div>
   </div>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
-  <p class="pnum">12 / 12</p>
+  <p class="pnum">14 / 15</p>
   <p class="photo-credit">Stratosphere eclipse photo · The Dorothy Project</p>
+</section>
+
+<!-- 15 APPENDIX -->
+<section class="slide bg-content s-matrix" data-slide="15" aria-label="Appendix: competitor detail">
+  <img class="logo-sm" src="media/logos/orion-wordmark.png" alt="Orion">
+  <header class="hd">
+    <p class="eyebrow">Appendix</p>
+    <h2>Competitor detail by lifecycle step</h2>
+  </header>
+  <div class="mx-wrap" data-allow-scroll>
+  <table class="mx">
+    <thead><tr><th></th><th>Validate</th><th>Plan</th><th>Sell</th><th>Run</th><th>Learn</th><th>AI</th><th>Built for</th></tr></thead>
+    <tbody><tr class="mx-orion"><td class="mx-name">Orion</td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td class="mx-t">Agents act with approval</td><td class="mx-t">Greenfield festivals</td></tr><tr><td class="mx-name">Ticket Fairy</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td class="mx-t">Agents act with approval</td><td class="mx-t">Festivals, venues</td></tr><tr><td class="mx-name">Cvent</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td class="mx-t">Assistant + outside agents</td><td class="mx-t">Conferences</td></tr><tr><td class="mx-name">Momentus</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-n">&ndash;</span></td><td class="mx-t">Assistant</td><td class="mx-t">Stadiums, venues</td></tr><tr><td class="mx-name">Eventeny</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-n">&ndash;</span></td><td class="mx-t">None shown</td><td class="mx-t">Community festivals</td></tr><tr><td class="mx-name">OnePlan</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td class="mx-t">None shown</td><td class="mx-t">Festivals, stadiums</td></tr><tr><td class="mx-name">Opendate</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td class="mx-t">Q&amp;A assistant</td><td class="mx-t">Independent venues</td></tr><tr><td class="mx-name">Tixr</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-f" title="Full"></span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td class="mx-t">Not core</td><td class="mx-t">Festivals, venues</td></tr><tr><td class="mx-name">Prism.fm</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td class="mx-t">None shown</td><td class="mx-t">Talent booking</td></tr><tr><td class="mx-name">Notion / monday AI</td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td><span class="mx-i mx-p" title="Partial"></span></td><td><span class="mx-n">&ndash;</span></td><td class="mx-t">General agents</td><td class="mx-t">Any team</td></tr></tbody>
+  </table>
+  </div>
+  <p class="mx-key"><span class="mx-i mx-f"></span> Full &nbsp;&nbsp; <span class="mx-i mx-p"></span> Partial &nbsp;&nbsp; &ndash; None. Orion reads pre-sales from ticketing partners rather than selling tickets itself.</p>
+  <p class="foot">Orion assessment, October 2026, from public product pages, press and funding announcements. Judgments, not vendor-confirmed.</p>
+  <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
+  <p class="pnum">15 / 15</p>
 </section>
 
 </main>
