@@ -2,38 +2,141 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>Orion | Investment Proposal</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Orion · Seed Proposal for Stratum</title>
 <meta name="description" content="A private investment proposal for Stratum Capital.">
 <link rel="icon" href="../favicon.ico" sizes="any">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Orion | Investment Proposal">
+<meta property="og:title" content="Orion · Seed Proposal for Stratum">
 <meta property="og:description" content="A private investment proposal for Stratum Capital.">
 <meta property="og:image" content="https://orion.imxp.org/media/brand/thumbnail-cover.jpg">
 <meta property="og:url" content="https://orion.imxp.org/stratum/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Orion | Investment Proposal">
+<meta name="twitter:title" content="Orion · Seed Proposal for Stratum">
 <meta name="twitter:description" content="A private investment proposal for Stratum Capital.">
 <meta name="twitter:image" content="https://orion.imxp.org/media/brand/thumbnail-cover.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500&family=Geist+Mono:wght@400&display=swap">
 <style>
+
 :root{
-  --bg:#060E19; --shade:#1E1C47; --teal:#006865; --ink:#FCFAF7;
-  --muted:rgba(252,250,247,.68); --faint:rgba(252,250,247,.14);
-  --purple:#7264F1; --turq:#50E3FF; --green:#80FCA7;
+  --bg:#060E19;--panel:#0B1626;--shade:#1E1C47;--ink:#FCFAF7;--muted:rgba(252,250,247,.68);--faint:rgba(252,250,247,.14);
+  --turq:#50E3FF;--purple:#7264F1;--green:#80FCA7;
   --sans:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);min-height:100%}
-body{font-family:var(--sans);font-weight:300;color:var(--ink);-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,li,td,th,figcaption{text-wrap:pretty}
+h1,h2,h3{text-wrap:balance;font-weight:400;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:var(--turq)}
+.mono{font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.eyebrow{font-family:var(--mono);text-transform:uppercase;font-size:13px;letter-spacing:.06em;color:var(--turq);margin:0 0 14px}
 .muted{color:var(--muted)}
-b{font-weight:500}
+.nw{white-space:nowrap}
 
-/* ---------- Gate screen ---------- */
+/* hero */
+.hero{position:relative;overflow:hidden;padding:56px 0 64px;border-bottom:1px solid var(--faint);
+  background:radial-gradient(60% 80% at 15% 20%,rgba(114,100,241,.38),transparent 70%),radial-gradient(50% 70% at 90% 80%,rgba(80,227,255,.18),transparent 70%),radial-gradient(45% 50% at 60% 0%,rgba(0,104,101,.45),transparent 70%)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:64px}
+.topbar img{height:26px;width:auto;display:block}
+.topbar span{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--muted);text-align:right}
+.hero h1{font-size:clamp(38px,6.4vw,72px);line-height:1.04;letter-spacing:-.02em;max-width:15ch}
+.hero .lede{font-size:clamp(19px,2.2vw,24px);color:var(--muted);max-width:44ch;margin:24px 0 0}
+.terms{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--faint);border:1px solid var(--faint);border-radius:6px;overflow:hidden;margin-top:48px}
+.terms div{background:rgba(6,14,25,.72);padding:20px 22px}
+.terms .k{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--muted);display:block}
+.terms .v{font-size:clamp(26px,3.2vw,38px);line-height:1.1;margin-top:8px;display:block;color:var(--ink)}
+.terms .v.p{color:var(--purple)}
+.terms .s{font-size:14px;color:var(--muted);display:block;margin-top:6px}
+
+/* sections */
+section{padding:72px 0;border-bottom:1px solid var(--faint)}
+section h2{font-size:clamp(28px,3.8vw,44px);line-height:1.12;letter-spacing:-.01em;max-width:24ch}
+section .intro{font-size:20px;color:var(--muted);max-width:60ch;margin:18px 0 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.card{background:var(--panel);border:1px solid var(--faint);border-radius:6px;padding:24px}
+.card h3{font-size:22px;line-height:1.25}
+.card p{margin:10px 0 0;color:var(--muted);font-size:17px}
+.card .big{font-size:40px;line-height:1;color:var(--purple);display:block;margin-bottom:12px}
+.card .tag{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--turq);display:block;margin-bottom:10px}
+ul.clean{list-style:none;padding:0;margin:18px 0 0}
+ul.clean li{padding:12px 0 12px 22px;border-top:1px solid var(--faint);position:relative;color:var(--muted)}
+ul.clean li::before{content:"";position:absolute;left:0;top:22px;width:8px;height:8px;border-radius:50%;background:var(--turq)}
+ul.clean li b{color:var(--ink);font-weight:400}
+
+/* structure */
+.struct{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch;margin-top:40px}
+.struct .arrow{display:flex;flex-direction:column;justify-content:center;align-items:center;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--turq);text-align:center;gap:8px;min-width:150px}
+.struct .arrow i{display:block;width:100%;height:1px;background:linear-gradient(90deg,var(--turq),var(--purple))}
+
+/* tables */
+.tbl{overflow-x:auto;margin-top:36px;border:1px solid var(--faint);border-radius:6px}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:16px}
+th,td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--faint);vertical-align:top}
+th{font-family:var(--mono);font-weight:400;font-size:12px;text-transform:uppercase;color:var(--muted);background:var(--panel)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tr.hl td{background:rgba(114,100,241,.12);color:var(--ink)}
+.note{font-size:14px;color:var(--muted);margin:14px 0 0;max-width:80ch}
+
+/* bars */
+.bars{margin-top:36px;display:grid;gap:18px}
+.bar .row{display:flex;justify-content:space-between;gap:16px;font-size:17px}
+.bar .row span:last-child{font-family:var(--mono);color:var(--muted);white-space:nowrap}
+.bar .track{height:12px;background:var(--faint);border-radius:6px;margin-top:8px;overflow:hidden}
+.bar .fill{display:block;height:100%;width:var(--p);background:linear-gradient(90deg,var(--purple),var(--turq));border-radius:6px}
+
+/* timeline */
+.tl{margin-top:40px;display:grid;gap:0}
+.tl div{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:16px 0;border-top:1px solid var(--faint)}
+.tl div:last-child{border-bottom:1px solid var(--faint)}
+.tl .d{font-family:var(--mono);font-size:14px;text-transform:uppercase;color:var(--turq);padding-top:3px}
+.tl p{margin:0}
+.tl p span{display:block;color:var(--muted);font-size:16px;margin-top:2px}
+.tl .new .d{color:var(--green)}
+
+/* close */
+.cta{padding:80px 0 96px;text-align:center}
+.cta h2{margin:0 auto;max-width:22ch}
+.cta p{color:var(--muted);margin:18px auto 0;max-width:52ch}
+.cta .contact{margin-top:32px;font-family:var(--mono);text-transform:uppercase;font-size:14px;color:var(--ink)}
+footer{padding:24px 0 40px;font-family:var(--mono);font-size:12px;text-transform:uppercase;color:var(--muted);text-align:center}
+footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sans);font-size:13px}
+
+@media (max-width:860px){
+  .terms{grid-template-columns:1fr 1fr}
+  .grid3{grid-template-columns:1fr}
+  .grid2{grid-template-columns:1fr}
+  .struct{grid-template-columns:1fr}
+  .struct .arrow{min-width:0;flex-direction:row;padding:4px 0}
+  .struct .arrow i{width:40px}
+}
+@media (max-width:520px){
+  body{font-size:17px}
+  .wrap{padding:0 16px}
+  .hero{padding:32px 0 44px}
+  .topbar{margin-bottom:44px}
+  .topbar span{font-size:11px}
+  section{padding:52px 0}
+  section .intro{font-size:18px}
+  .terms div{padding:16px}
+  .tl div{grid-template-columns:1fr;gap:4px}
+  .card{padding:20px}
+  .card .big{font-size:34px}
+  .bar .row{flex-direction:column;gap:2px}
+  .sep{display:none}
+  .contact a,footer .wrap>span.nw{display:block;margin-top:6px}
+  .bar .row span:last-child{font-size:14px}
+}
+
+
+/* ---------- Gate screen (preserved from previous build) ---------- */
 #gate{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(900px 600px at 100% 0%, rgba(114,100,241,.18), transparent 70%),radial-gradient(800px 600px at 0% 100%, rgba(0,104,101,.20), transparent 70%),var(--bg);z-index:10;padding:24px}
 #gate .card{width:100%;max-width:420px;text-align:center}
 #gate img.logo{height:28px;margin-bottom:36px}
@@ -47,117 +150,8 @@ b{font-weight:500}
 #gate .hint{color:var(--muted);font-size:13px;margin-top:28px}
 #gate .hint a{color:var(--green)}
 
-/* ---------- Content (same as rendered one-pager) ---------- */
-#content{display:none;width:100%;overflow-x:auto}
-.page{position:relative;width:1920px;max-width:none;background:var(--bg);color:var(--ink);padding:70px 100px 60px;margin:0 auto}
-.page::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(900px 600px at 100% 0%, rgba(114,100,241,.18), transparent 70%),
-    radial-gradient(800px 600px at 0% 100%, rgba(0,104,101,.20), transparent 70%),
-    radial-gradient(600px 500px at 60% -10%, rgba(80,227,255,.10), transparent 70%);
-}
-.grain{position:absolute;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:overlay;background-size:200px 200px;z-index:0;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E")}
-.content-inner{position:relative;z-index:1}
-h1,h2,h3,p,ul,li{margin:0;padding:0}
-ul{list-style:none}
-.eyebrow,.cap{font-family:var(--mono);text-transform:uppercase;letter-spacing:.02em}
-.eyebrow{color:var(--green);font-size:19px}
-.cap{color:var(--muted);font-size:17px}
-.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:46px}
-.logo{height:30px;width:auto;display:block}
-.conf-top{font-family:var(--mono);font-size:17px;color:var(--muted);text-align:right;line-height:1.5}
-.conf-top b{color:var(--green);font-weight:400}
-.hero-row{display:flex;gap:48px;align-items:flex-start;margin-bottom:40px}
-.hero{flex:1 1 auto;min-width:0;padding-top:6px}
-.hero h1{font-size:54px;line-height:1.1;font-weight:400;letter-spacing:-0.01em}
-.hero .sub{font-size:22px;line-height:1.45;color:var(--muted);margin-top:18px;max-width:960px}
-.offer{flex:0 0 620px;background:rgba(30,28,71,.55);border:1.5px solid rgba(114,100,241,.5);border-radius:18px;padding:28px 34px}
-.offer .eyebrow{margin-bottom:10px}
-.offer h2{font-size:27px;line-height:1.3;font-weight:400}
-.offer .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:20px;padding-top:18px;border-top:1px solid var(--faint)}
-.offer .item b{display:block;font-size:27px;color:var(--purple);line-height:1.15}
-.offer .item span{display:block;font-size:15px;color:var(--muted);margin-top:4px;line-height:1.35}
-.rule{height:1px;background:var(--faint);margin-bottom:40px}
-.cols{display:grid;grid-template-columns:560px 560px 1fr;column-gap:42px;margin-bottom:40px}
-.col h3{font-size:21px;font-weight:400;color:var(--ink);margin-bottom:12px;line-height:1.3}
-.col p{font-size:16px;line-height:1.5;color:var(--muted)}
-.col .stat-row{display:flex;gap:26px;margin-top:18px}
-.col .stat b{display:block;font-size:32px;color:var(--ink);font-weight:400}
-.col .stat span{display:block;font-size:14px;color:var(--muted);margin-top:4px}
-.pains{margin-top:10px}
-.pains li{display:flex;gap:12px;align-items:flex-start;font-size:16px;color:var(--ink);padding:9px 0;border-top:1px solid var(--faint)}
-.pains li:first-child{border-top:none}
-.pains .dot{width:6px;height:6px;border-radius:50%;background:var(--green);margin-top:7px;flex:none}
-.cards li{padding-top:14px;border-top:2px solid var(--turq);margin-top:14px}
-.cards li:first-child{margin-top:0}
-.cards b{display:block;font-size:18px;font-weight:400}
-.cards span{display:block;font-size:15px;color:var(--muted);margin-top:3px;line-height:1.4}
-.live-feats{display:grid;grid-template-columns:1fr 1fr;gap:7px 16px;margin-top:16px}
-.live-feats li{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--ink)}
-.live-feats .ck{color:var(--green);flex:none}
-.milestones{padding-top:22px;border-top:1px solid var(--faint);margin-bottom:34px}
-.milestones .cap{margin-bottom:16px;display:block}
-.ms-row{display:grid;grid-template-columns:repeat(5,1fr);column-gap:30px}
-.ms-row li .ms-date{display:block;color:var(--green);font-family:var(--mono);font-size:15px;text-transform:uppercase}
-.ms-row li p{font-size:15px;line-height:1.4;margin-top:6px;color:var(--ink)}
-.teamline{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;padding-top:20px;border-top:1px solid var(--faint);margin-bottom:34px}
-.teamline .founder b{font-size:18px;display:block}
-.teamline .founder span{font-size:14px;color:var(--green);display:block;margin-top:2px}
-.teamline .fstats{display:flex;gap:26px;margin-top:12px;flex-wrap:wrap}
-.teamline .fstats div b{font-size:18px;display:block}
-.teamline .fstats div span{font-size:12px;color:var(--muted);display:block;margin-top:2px;max-width:160px}
-.teamline .advisors{font-size:13px;color:var(--muted);max-width:560px;text-align:right;line-height:1.5;flex:0 0 auto}
-.teamline .advisors b{color:var(--ink);font-weight:400;display:block;margin-bottom:4px;font-size:13px;text-transform:uppercase;font-family:var(--mono);letter-spacing:.02em}
-.cta-block{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex:0 0 auto}
-.cta-btn{display:inline-block;background:var(--purple);color:var(--ink);text-decoration:none;font-family:var(--sans);font-size:15px;padding:12px 22px;border-radius:10px;white-space:nowrap}
-.cta-btn:hover{filter:brightness(1.1)}
-.cta-contact{font-family:var(--mono);font-size:13px;color:var(--muted)}
-.cta-contact a{color:var(--green);text-decoration:none}
-.demo-section{padding-top:22px;border-top:1px solid var(--faint);margin-bottom:34px}
-.demo-player{position:relative;width:100%;max-width:820px;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#0B1424;border:1px solid rgba(252,250,247,.1);margin-top:4px}
-.demo-player video{width:100%;height:100%;object-fit:cover;display:block;background:#0B1424}
-.demo-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;border:2px solid var(--green);background:rgba(6,14,25,.45);cursor:pointer;display:flex;align-items:center;justify-content:center}
-.demo-play::after{content:"";margin-left:5px;border-style:solid;border-color:transparent transparent transparent var(--ink);border-width:12px 0 12px 18px}
-.demo-play[hidden]{display:none}
-.foot{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:14px;color:var(--muted);padding-top:16px;border-top:1px solid var(--faint)}
-.foot a{color:var(--green);text-decoration:none}
-@media (max-width:960px){
-  .page{width:100%;padding:40px 22px 44px}
-  .topbar{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:28px}
-  .logo{height:22px}
-  .conf-top{text-align:left;font-size:13px}
-  .hero-row{flex-direction:column;gap:22px;margin-bottom:28px}
-  .hero{padding-top:0}
-  .hero h1{font-size:30px;line-height:1.18}
-  .hero .sub{font-size:16px;margin-top:12px;max-width:none}
-  .offer{flex:none;width:100%;padding:20px 22px}
-  .offer h2{font-size:19px}
-  .offer .grid{grid-template-columns:1fr 1fr;gap:14px 16px;margin-top:16px;padding-top:14px}
-  .offer .item b{font-size:20px}
-  .offer .item span{font-size:13px}
-  .rule{margin-bottom:28px}
-  .cols{grid-template-columns:1fr;column-gap:0;row-gap:30px;margin-bottom:28px}
-  .col h3{font-size:19px}
-  .col p{font-size:15px}
-  .col .stat b{font-size:26px}
-  .live-feats{grid-template-columns:1fr 1fr}
-  .milestones{margin-bottom:28px}
-  .ms-row{grid-template-columns:1fr;row-gap:18px}
-  .teamline{flex-direction:column;align-items:flex-start;gap:22px;margin-bottom:28px}
-  .teamline .fstats{gap:20px}
-  .teamline .advisors{text-align:left;max-width:none}
-  .cta-block{align-items:flex-start}
-  .demo-player{max-width:100%}
-  .foot{flex-direction:column;align-items:flex-start;gap:6px;font-size:12px}
-}
-@media (max-width:480px){
-  .hero h1{font-size:25px}
-  .offer .grid{grid-template-columns:1fr}
-  .live-feats{grid-template-columns:1fr}
-  .eyebrow{font-size:16px}
-  .cap{font-size:14px}
-}
+/* ---------- Gate/content toggle ---------- */
+#content{display:none}
 </style>
 </head>
 <body>
@@ -165,114 +159,193 @@ ul{list-style:none}
 <div id="gate">
   <div class="card">
     <img class="logo" src="../media/logos/orion-wordmark.png" alt="Orion">
-    <h1>Investment Proposal</h1>
+    <h1>Seed Proposal</h1>
     <p class="sub">This page is for Stratum Capital only.<br>Enter the password you were given to continue.</p>
     <input id="pw" type="password" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Password" autofocus>
     <button id="go">Unlock</button>
     <p class="err" id="err"></p>
-    <p class="hint">Trouble getting in? Contact <a href="mailto:mitch@imxp.org">mitch@imxp.org</a>.</p>
+    <p class="hint">Trouble getting in? Contact <a href="mailto:mitch@im-xp.com">mitch@im-xp.com</a>.</p>
   </div>
 </div>
 
 <div id="content">
-  <div class="page">
-    <div class="grain"></div>
-    <div class="content-inner">
-      <div class="topbar">
-        <img class="logo" src="../media/logos/orion-wordmark.png" alt="Orion">
-        <div class="conf-top">Confidential &middot; <b>Investment Proposal</b><br>Prepared exclusively for Stratum Capital &middot; October 2026</div>
-      </div>
-
-      <div class="hero-row">
-        <div class="hero">
-          <h1>Orion &mdash; the agentic co-pilot for live event production, built inside IMXP.</h1>
-          <p class="sub">Orion turns the decisions, demand signals and outcomes from IMXP's own events into a system that plans the next one better: run events&nbsp;&rarr; capture decisions and outcomes&nbsp;&rarr; apply that knowledge forward. We're inviting Stratum Capital into Orion's pre-seed round.</p>
-        </div>
-        <div class="offer">
-          <p class="eyebrow">The offer</p>
-          <h2>Up to <b style="color:var(--green)">$500,000</b> on a SAFE at a <b style="color:var(--green)">$5,000,000</b> post-money cap</h2>
-          <div class="grid">
-            <div class="item"><b>$500K</b><span>Available allocation for Stratum Capital</span></div>
-            <div class="item"><b>$5M</b><span>Post-money valuation cap, SAFE note</span></div>
-            <div class="item"><b>IMXP Product, Inc.</b><span>Delaware C-corp, Orion's issuing entity</span></div>
-            <div class="item"><b>Oct 2026</b><span>Round open now &middot; rolling close</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="rule"></div>
-
-      <div class="cols">
-        <div class="col">
-          <p class="eyebrow" style="margin-bottom:14px">The problem</p>
-          <h3>Event commitments lock in before the information does</h3>
-          <p>Iceland Eclipse exposed it directly: big calls on housing, content and marketing get made on forecasts, and the real numbers only show up after the money is already spent.</p>
-          <ul class="pains">
-            <li><span class="dot"></span>Demand is a guess until tickets are already selling</li>
-            <li><span class="dot"></span>Each event's plan starts from zero, not the last one's results</li>
-            <li><span class="dot"></span>What the crew learns on-site leaves with them</li>
-          </ul>
-        </div>
-        <div class="col">
-          <p class="eyebrow" style="margin-bottom:14px">The solution</p>
-          <h3>Orion is the end-to-end copilot for event production</h3>
-          <ul class="cards">
-            <li><b>Test demand first</b><span>Pre-sales and signals prove the event before the big spend.</span></li>
-            <li><b>Plan from real numbers</b><span>Real lead times, real costs, each team's work for today.</span></li>
-            <li><b>Keep what crews learn</b><span>Every decision saved with its reason and outcome, carried to the next event.</span></li>
-          </ul>
-        </div>
-        <div class="col">
-          <p class="eyebrow" style="margin-bottom:14px">Traction &mdash; already running</p>
-          <h3>Live at Iceland Eclipse 2026</h3>
-          <p>4,200 participants from 75+ countries &middot; supporting <b style="color:var(--ink)">$6M</b> in event revenue.</p>
-          <div class="stat-row">
-            <div class="stat"><b>120+</b><span>Decisions on record</span></div>
-            <div class="stat"><b>2 of 4</b><span>2027 events vetted by Orion</span></div>
-          </div>
-          <ul class="live-feats">
-            <li><span class="ck">&#10003;</span>Support inbox</li>
-            <li><span class="ck">&#10003;</span>Slack approvals</li>
-            <li><span class="ck">&#10003;</span>Meeting capture</li>
-            <li><span class="ck">&#10003;</span>Decision log</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="demo-section">
-        <p class="cap" style="margin-bottom:14px">Product demo</p>
-        <div class="demo-player">
-          <video id="stratumDemoVideo" preload="metadata" playsinline poster="../media/photos/orion-demo-poster.jpg" aria-label="Project Orion demo"></video>
-          <button type="button" class="demo-play" id="stratumPlayBtn" aria-label="Play the demo"></button>
-        </div>
-      </div>
-
-      <div class="milestones">
-        <span class="cap">Use of proceeds &amp; milestones &mdash; 10 months of platform development &amp; model training toward full v1 deployment</span>
-        <ul class="ms-row">
-          <li><span class="ms-date">Dec 2026</span><p>Planning go/no-go gate</p></li>
-          <li><span class="ms-date">Mar 2027</span><p>Orion beta at Coherence, Austin</p></li>
-          <li><span class="ms-date">May 2027</span><p>Orion release at Atomika, Roswell</p></li>
-          <li><span class="ms-date">Aug 2027</span><p>Full lifecycle at Egypt Eclipse, Luxor</p></li>
-          <li><span class="ms-date">After Egypt</span><p>Decision point: scale inside IMXP or offer Orion externally</p></li>
-        </ul>
-      </div>
-
-      <div class="teamline">
-        <div class="founder">
-          <b>Mitch Morales &middot; Founder &amp; CEO</b><span>Building Orion as IMXP's own production backbone first</span>
-        </div>
-        <div class="cta-block">
-          <a class="cta-btn" href="https://orion.imxp.org/">View the full deck &rarr;</a>
-          <span class="cta-contact">Contact: Mitch Morales &middot; <a href="mailto:mitch@imxp.org">mitch@imxp.org</a></span>
-        </div>
-      </div>
-
-      <div class="foot">
-        <span>Investment in IMXP Product, Inc. (DE C-corp), a wholly owned subsidiary of Immersive Experiences, LLC.</span>
-      </div>
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar"><img src="data:image/png;base64,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" alt="IMXP"><span>Prepared for Stratum<br>Confidential · October 2026</span></div>
+    <p class="eyebrow">Orion · Seed Proposal</p>
+    <h1>Build the operating system for live events, at full speed.</h1>
+    <p class="lede">You told us $500K was too small. We agree. Here is the round that gets Orion to market first.</p>
+    <div class="terms">
+      <div><span class="k">Round</span><span class="v">$5M seed</span><span class="s">Priced or SAFE, at Stratum's preference</span></div>
+      <div><span class="k">Valuation</span><span class="v p">$25M post</span><span class="s">20% to new investors</span></div>
+      <div><span class="k">Stratum lead</span><span class="v">$3M</span><span class="s">60% of the round, 12% ownership</span></div>
+      <div><span class="k">Target close</span><span class="v">Nov 2026</span><span class="s">First week of December at the latest</span></div>
     </div>
   </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">What changed</p>
+    <h2>The opportunity is bigger than the plan we showed you.</h2>
+    <p class="intro">Our first round funded a product for our own events. This round funds the company that runs everyone else's. Three things moved us:</p>
+    <div class="grid3">
+      <div class="card"><span class="tag">First mover</span><h3>No one has built this yet</h3><p>The software that ran festivals is gone, and nothing built for agents has replaced it. Moving slowly gives others time to copy us.</p></div>
+      <div class="card"><span class="tag">The hard part</span><h3>Intelligence, not code</h3><p>Software is getting cheaper to build. Training systems that forecast event risk and money is not, and errors there are expensive. That takes data science talent.</p></div>
+      <div class="card"><span class="tag">Unfair advantage</span><h3>We run the test events</h3><p>Four IMXP events in 2027 give Orion real users, real money and hard deadlines no competitor can buy.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Structure</p>
+    <h2>Investors own the product company. The events pay to use it.</h2>
+    <p class="intro">Orion lives in IMXP Product, Inc., a Delaware C-corp. Investors buy into that company only, separate from event risk.</p>
+    <div class="struct">
+      <div class="card"><span class="tag">Parent</span><h3>Immersive Experiences, LLC</h3><p>Produces the events and holds event revenue and risk. Owns 80% of IMXP Product, Inc. after this round.</p></div>
+      <div class="arrow">License + transaction fees<i></i>Orion platform</div>
+      <div class="card"><span class="tag">Where you invest</span><h3>IMXP Product, Inc.</h3><p>Owns Orion: code, models, data and IP, formally assigned from the LLC before close. Earns revenue from every event that runs on it.</p></div>
+    </div>
+    <ul class="clean">
+      <li><b>Intercompany license.</b> The LLC pays the C-corp a per-event license plus a fee on the transactions Orion handles, on arm's-length terms set with our accountant.</li>
+      <li><b>Clean IP.</b> All Orion code, data and trademarks are assigned to the C-corp before funds are wired.</li>
+      <li><b>Shared people, priced fairly.</b> Team members who work across both companies are allocated by time, documented in a services agreement.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Revenue from day one</p>
+    <h2>The 2027 calendar puts about $30M through Orion.</h2>
+    <p class="intro">Four IMXP events forecast $16.0M in revenue and $14.1M in vendor, crew and production payouts. Orion earns a license on each event and a fee on the money it moves.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>2027 Event</th><th class="n">Forecast revenue</th><th class="n">Forecast payouts</th></tr></thead>
+        <tbody>
+          <tr><td>Coherence · Austin · Mar</td><td class="n">$1.39M</td><td class="n">$1.30M</td></tr>
+          <tr><td>ATOMIKA · Roswell · May</td><td class="n">$1.64M</td><td class="n">$1.64M</td></tr>
+          <tr><td>Midnight Sun · Reykjavík · Jul</td><td class="n">$3.76M</td><td class="n">$3.58M</td></tr>
+          <tr><td>Egypt Eclipse · Luxor · Jul to Aug</td><td class="n">$9.24M</td><td class="n">$7.59M</td></tr>
+          <tr class="hl"><td>Total through Orion</td><td class="n">$16.03M</td><td class="n">$14.11M</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Orion pricing</th><th class="n">License / event</th><th class="n">Fee on revenue</th><th class="n">Fee on payouts</th><th class="n">2027 Orion revenue</th></tr></thead>
+        <tbody>
+          <tr><td>Base</td><td class="n">$50K</td><td class="n">2%</td><td class="n">0.5%</td><td class="n">$0.59M</td></tr>
+          <tr class="hl"><td>Target</td><td class="n">$100K</td><td class="n">3%</td><td class="n">1%</td><td class="n">$1.02M</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Forecasts from IMXP's October 2026 cash flow model. Midnight Sun and ATOMIKA revenue is shown net of cost of goods, so actual transaction volume is higher. Intercompany rates are proposed and will be finalized at arm's length before close.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Beyond IMXP</p>
+    <h2>Every festival we add is about $150K a year.</h2>
+    <p class="intro">Our own calendar proves what Orion earns per event. The same model sold to other producers is the business this round builds.</p>
+    <div class="grid3">
+      <div class="card"><span class="big">2027</span><h3>Prove it on our events</h3><p>Four events, about $1M in Orion revenue at target pricing, every decision captured.</p></div>
+      <div class="card"><span class="big">2 pilots</span><h3>Open it to others</h3><p>Two outside producers run on Orion in 2027, deployed by our field team, as proof for acquirers and future customers.</p></div>
+      <div class="card"><span class="big">100</span><h3>Festivals, $15M a year</h3><p>At about $150K per event, 100 outside festivals is roughly $15M in annual revenue. There are thousands of destination events worldwide.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Use of proceeds</p>
+    <h2>$5M over 18 months, built around the models.</h2>
+    <p class="intro">Most of the money goes to the people who make Orion intelligent, not just more engineers.</p>
+    <div class="bars">
+      <div class="bar"><div class="row"><span>Data science and model training</span><span>$2.00M · 40%</span></div><div class="track"><span class="fill" style="--p:40%"></span></div></div>
+      <div class="bar"><div class="row"><span>Platform engineering</span><span>$1.25M · 25%</span></div><div class="track"><span class="fill" style="--p:25%"></span></div></div>
+      <div class="bar"><div class="row"><span>Field deployment and outside pilots</span><span>$0.75M · 15%</span></div><div class="track"><span class="fill" style="--p:15%"></span></div></div>
+      <div class="bar"><div class="row"><span>Data infrastructure and compute</span><span>$0.50M · 10%</span></div><div class="track"><span class="fill" style="--p:10%"></span></div></div>
+      <div class="bar"><div class="row"><span>Legal, finance and compliance</span><span>$0.50M · 10%</span></div><div class="track"><span class="fill" style="--p:10%"></span></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Roadmap</p>
+    <h2>Each event ships part of Orion and proves it on real users.</h2>
+    <div class="tl">
+      <div><span class="d">Nov 2026</span><p>Close the round<span>IP assigned, intercompany license signed, first data science hires</span></p></div>
+      <div><span class="d">Dec 2026</span><p>Planning go/no-go<span>Iceland Eclipse data locked into Orion's first template</span></p></div>
+      <div><span class="d">Mar 2027</span><p>Beta at Coherence, Austin<span>Live demand testing on real pre-sales</span></p></div>
+      <div class="new"><span class="d">Q2 2027</span><p>First outside pilot<span>An outside producer runs on Orion, deployed by our field team</span></p></div>
+      <div><span class="d">May 2027</span><p>Release at ATOMIKA, Roswell<span>Planning and coaching modules in production</span></p></div>
+      <div><span class="d">Jul 2027</span><p>Memory test at Midnight Sun, Reykjavík<span>Orion starts an event from what it learned at the last one</span></p></div>
+      <div><span class="d">Aug 2027</span><p>Full lifecycle at Egypt Eclipse, Luxor<span>Our largest event, run end to end on Orion</span></p></div>
+      <div class="new"><span class="d">Q4 2027</span><p>Second outside pilot, then scale<span>Choose to scale outside sales, a strategic partnership or an exit</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Outcome</p>
+    <h2>Built to be the system the biggest event companies need.</h2>
+    <p class="intro">Live entertainment's leaders spend almost every dollar they earn on costs. Orion cuts that cost and keeps what each event learns. That makes it valuable to the companies that run the most events.</p>
+    <div class="grid2">
+      <div class="card"><span class="tag">Strategic buyers</span><h3>Promoters, ticketing and experience platforms</h3><p>Companies such as Live Nation, Fever and Eventbrite already own the audiences and the money flows. Orion runs the production between them.</p></div>
+      <div class="card"><span class="tag">Why keep it in-house now</span><h3>The data is the moat</h3><p>Running Orion on our own events first builds the decision data competitors can't copy. That raises the price of a strategic exit more than early licensing revenue would.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Team</p>
+    <h2>People who run the events and build the software.</h2>
+    <ul class="clean">
+      <li><b>Mitch Morales, Founder &amp; CEO.</b> Created Texas Eclipse ($20M revenue, 38,000 people) and Euphoria (20,000 a day). Helped grow 360training from $2M to $200M (exited). Deployed a $10M entertainment fund with Unknown Ventures.</li>
+      <li><b>Tule Romeo, Lead Developer.</b> Founded SimpleFi, a billing engine with 200,000+ paying users. Built ticketing and event systems for Boom Festival and Envision.</li>
+      <li><b>Benjamin Hill, Product Engineer.</b> Three years shipping products at Indeed.</li>
+      <li><b>Regan Heckscher and Lee Cruz.</b> Systems and AI infrastructure for our events and for Orion.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Next steps</p>
+    <h2>A clear path to close by the end of November.</h2>
+    <div class="tl">
+      <div><span class="d">This week</span><p>Agree on terms<span>Round size, valuation, instrument and Stratum's allocation</span></p></div>
+      <div><span class="d">Nov wk 1</span><p>Stratum internal review<span>Data room shared under our existing mutual NDA</span></p></div>
+      <div><span class="d">Nov wk 2</span><p>Diligence<span>Actuarial and legal review, IP assignment and intercompany license drafts</span></p></div>
+      <div><span class="d">End Nov</span><p>Close<span>Documents signed, escrow funded, wire received</span></p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <h2>Let's build it together.</h2>
+    <p>We're ready to move as fast as you are.</p>
+    <p class="contact"><span class="nw">Mitch Morales · Founder &amp; CEO</span> <span class="sep">·</span> <a class="nw" href="mailto:mitch@im-xp.com">mitch@im-xp.com</a></p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="nw">Confidential · Prepared for Stratum</span> <span class="sep">·</span> <span class="nw">October 2026</span>
+    <p>This proposal is for discussion only and is not an offer to sell securities. Forward-looking figures are estimates based on current plans and may change. Final terms are subject to definitive agreements.</p>
+  </div>
+</footer>
 </div>
 
 <script>
