@@ -449,6 +449,9 @@ html[data-mode="deck"] .cm-cards .sf-n{font-size:16px}
 html[data-mode="deck"] .cm-cards b{font-size:32px;margin-top:6px}
 html[data-mode="deck"] .cm-cards p{font-size:21px;line-height:1.4;margin-top:8px}
 
+html[data-mode="deck"] .s-fund .uop-list li.top .lab,html[data-mode="deck"] .s-fund .uop-list li.top .amt{font-size:24px}
+html[data-mode="deck"] .s-fund .uop-list li.top .track{height:14px}
+html[data-mode="deck"] .uop-note{font-size:16px;line-height:1.4;margin-top:18px}
 /* 10 close */
 html[data-mode="deck"] .close{left:0;right:0;top:0;height:1000px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 html[data-mode="deck"] .close h2{font-size:80px}
@@ -733,6 +736,11 @@ html[data-mode="portrait"] .cover-foot .footseg+.footseg,html[data-mode="portrai
 .cm-cards b{color:var(--ink);font-weight:400}
 .cm-cards p{color:var(--muted);margin:0;text-wrap:pretty}
 
+.uop-list li.top .fill{background:var(--purple)}
+.uop-list li.top .lab{color:var(--ink)}
+.uop-list .amt{color:rgba(252,250,247,.78)}
+.uop-note{color:var(--muted)}
+html[data-mode="portrait"] .uop-note{font-size:12px;margin-top:10px}
 .uop .row{display:flex;justify-content:space-between;gap:24px}
 .uop .amt{color:var(--muted);white-space:nowrap}
 .uop .track{background:var(--faint);border-radius:999px;overflow:hidden}
@@ -1769,14 +1777,14 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
     <thead><tr><th></th><th>2027</th><th>2028</th><th>2029</th></tr></thead>
     <tbody>
       <tr><td>Revenue</td><td>$1.2M</td><td>$6.2M</td><td>$29.7M</td></tr>
-      <tr><td>EBITDA</td><td>($2.2M)</td><td>($1.1M)</td><td class="pos">$11.7M</td></tr>
+      <tr><td>EBITDA</td><td>($2.0M)</td><td>($1.0M)</td><td class="pos">$11.8M</td></tr>
       <tr><td>Event revenue on Orion</td><td>$25M</td><td>$115M</td><td>$517M</td></tr>
       <tr><td>Partner festivals</td><td>2</td><td>10</td><td>30</td></tr>
       <tr><td>Long-tail organizers</td><td>&ndash;</td><td>1,567</td><td>11,520</td></tr>
-      <tr><td>Headcount</td><td>15</td><td>32</td><td>58</td></tr>
+      <tr><td>Headcount</td><td>14</td><td>32</td><td>58</td></tr>
     </tbody>
   </table>
-  <p class="pj-note">EBITDA positive from Q4 2028. The $5M seed carries the plan, with lowest cash of about $0.8M in Q3 2028.</p>
+  <p class="pj-note">EBITDA positive from Q4 2028. The $5M seed carries the plan, with lowest cash of about $1.1M in Q3 2028.</p>
   <p class="foot">Orion Pro Forma 2027 to 2029, October 2026. Forward-looking estimates; not a forecast of results.</p>
   <p class="conf"><span class="nw footseg">Confidential</span><span class="footdot"> &middot; </span><span class="nw footseg" style="color:var(--green)">Product Fundraise</span><span class="footdot"> &middot; </span><span class="nw footseg">October 2026</span></p>
   <p class="pnum">12 / 14</p>
@@ -1806,7 +1814,7 @@ html[data-mode="portrait"] .dots.away:focus-within{opacity:1;pointer-events:auto
   </div>
   <div class="uop">
     <p class="cap">Use of proceeds, 18 months</p>
-    <ul class="uop-list"><li><div class="row"><span class="lab">Platform engineering</span><span class="amt">$1.70M · 32%</span></div><div class="track"><span class="fill" style="--p:100%"></span></div></li><li><div class="row"><span class="lab">Data science and model training</span><span class="amt">$1.66M · 31%</span></div><div class="track"><span class="fill" style="--p:97%"></span></div></li><li><div class="row"><span class="lab">Leadership</span><span class="amt">$0.68M · 13%</span></div><div class="track"><span class="fill" style="--p:41%"></span></div></li><li><div class="row"><span class="lab">Finance, legal and operations</span><span class="amt">$0.64M · 12%</span></div><div class="track"><span class="fill" style="--p:38%"></span></div></li><li><div class="row"><span class="lab">Field deployment and outside pilots</span><span class="amt">$0.40M · 7%</span></div><div class="track"><span class="fill" style="--p:22%"></span></div></li><li><div class="row"><span class="lab">Hosting and compute</span><span class="amt">$0.20M · 4%</span></div><div class="track"><span class="fill" style="--p:12%"></span></div></li></ul>
+    <ul class="uop-list"><li class="top"><div class="row"><span class="lab">Platform implementation and model training</span><span class="amt">$2.33M · 47%</span></div><div class="track"><span class="fill" style="--p:47%"></span></div></li><li><div class="row"><span class="lab">Product engineering</span><span class="amt">$1.70M · 34%</span></div><div class="track"><span class="fill" style="--p:34%"></span></div></li><li><div class="row"><span class="lab">Field deployment and outside pilots</span><span class="amt">$0.40M · 8%</span></div><div class="track"><span class="fill" style="--p:8%"></span></div></li><li><div class="row"><span class="lab">Hosting, compute and software</span><span class="amt">$0.29M · 6%</span></div><div class="track"><span class="fill" style="--p:6%"></span></div></li><li><div class="row"><span class="lab">Finance, legal and admin</span><span class="amt">$0.27M · 5%</span></div><div class="track"><span class="fill" style="--p:5%"></span></div></li></ul><p class="uop-note">An 18-month plan of about $5.0M. Orion revenue from 2027 events adds about $1.7M of cushion.</p>
   </div>
   <ol class="ms">
     <li><span class="ms-date">Mar 2027</span><p>Orion beta at Coherence</p></li>
