@@ -55,6 +55,16 @@ a{color:var(--turq)}
 .terms .v.p{color:var(--purple)}
 .terms .s{font-size:14px;color:var(--muted);display:block;margin-top:6px}
 
+
+/* resource buttons */
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;border:1px solid rgba(252,250,247,.32);color:var(--ink);text-decoration:none;font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.05em;line-height:1;white-space:nowrap;transition:background .15s,border-color .15s}
+.btn:hover{border-color:var(--ink);background:rgba(252,250,247,.06)}
+.btn.pri{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.pri:hover{background:#fff}
+.btn svg{width:14px;height:14px;flex:none}
+.cta .btns{justify-content:center;margin-top:28px}
+@media (max-width:520px){.btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{justify-content:center;padding:13px 12px}.btn.pri{grid-column:1 / -1}}
 /* sections */
 section{padding:72px 0;border-bottom:1px solid var(--faint)}
 section h2{font-size:clamp(28px,3.8vw,44px);line-height:1.12;letter-spacing:-.01em;max-width:none;text-wrap:pretty}
@@ -181,6 +191,11 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
       <div><span class="k">Valuation</span><span class="v p">$25M post</span><span class="s">20% to new investors</span></div>
       <div><span class="k">Stratum lead</span><span class="v">$2.5M</span><span class="s">50% of the round, 10% ownership</span></div>
       <div><span class="k">Target close</span><span class="v">Nov 2026</span><span class="s">December 11 at the latest</span></div>
+    </div>
+    <div class="btns">
+      <a class="btn pri" href="https://drive.google.com/drive/folders/1K_lAkf9vi5RfPj6dBZszPid5G5hqquZM" target="_blank" rel="noopener">Data room <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+      <a class="btn" href="https://orion.imxp.org/" target="_blank" rel="noopener">Deck <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+      <a class="btn" href="https://orion.imxp.org/demo/" target="_blank" rel="noopener">Demo video <svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7.5-4.5z"/></svg></a>
     </div>
   </div>
 </header>
@@ -337,6 +352,11 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
 <div class="cta">
   <div class="wrap">
     <h2>Let's build it together.</h2>
+    <div class="btns">
+      <a class="btn pri" href="https://drive.google.com/drive/folders/1K_lAkf9vi5RfPj6dBZszPid5G5hqquZM" target="_blank" rel="noopener">Data room <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+      <a class="btn" href="https://orion.imxp.org/" target="_blank" rel="noopener">Deck <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11L11 5M6 5h5v5"/></svg></a>
+      <a class="btn" href="https://orion.imxp.org/demo/" target="_blank" rel="noopener">Demo video <svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7.5-4.5z"/></svg></a>
+    </div>
     <p class="contact"><span class="nw">Mitch Morales · Founder &amp; CEO</span> <span class="sep">·</span> <a class="nw" href="mailto:mitch@imxp.org">mitch@imxp.org</a></p>
   </div>
 </div>
