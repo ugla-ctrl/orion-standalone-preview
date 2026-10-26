@@ -51,7 +51,7 @@ p{margin:0;text-wrap:pretty}
 .hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;overflow:hidden}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,14,25,.55) 0%,rgba(6,14,25,.15) 35%,rgba(6,14,25,.85) 78%,var(--bg) 100%)}
-.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(56px,9vh,96px);width:100%}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(110px,14vh,150px);width:100%}
 .hero .mark{width:min(320px,62vw);height:auto;margin-bottom:28px}
 .hero h1{font-size:clamp(34px,6vw,76px);line-height:1.04;text-wrap:balance}
 .hero .lede{margin-top:22px;text-wrap:pretty;color:var(--ink);opacity:.92}
@@ -115,21 +115,19 @@ h2 + p{margin-top:24px}
 .road p{margin-top:8px;font-size:15.5px;color:var(--muted);line-height:1.5}
 .after{margin-top:40px;padding-top:24px;border-top:1px solid var(--faint);color:var(--muted)}
 
-/* team */
-.team{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:48px}
-.team div{min-width:0}
-.team img{width:88px;height:88px;border-radius:50%;object-fit:cover;margin-bottom:14px}
-.team b{display:block;font-weight:400;font-size:18px}
-.team .r{display:block;margin:4px 0 8px;font:400 11.5px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--green)}
-.team p{font-size:14.5px;line-height:1.5;color:var(--muted)}
-
+/* scroll cue */
+.cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;font:400 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);opacity:.75;text-decoration:none;border:0;transition:opacity .3s}
+.cue:hover{opacity:1}
+.cue i{display:block;width:1px;height:34px;background:linear-gradient(var(--green),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes cue{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+@media (prefers-reduced-motion:reduce){.cue i{animation:none}}
 /* vision */
 .vision{position:relative;overflow:hidden;text-align:center;padding:clamp(120px,18vw,220px) 0}
 .vision img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .vision::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(6,14,25,.25),rgba(6,14,25,.75))}
 .vision .wrap{position:relative;z-index:2}
 .vision h2{font-size:clamp(34px,5.4vw,64px);max-width:16ch;margin:0 auto}
-.vision p{margin:22px auto 0;max-width:36ch;font-size:clamp(19px,2vw,23px);color:var(--ink);opacity:.9}
+.vision p{margin:22px auto 0;max-width:none;text-wrap:pretty;font-size:clamp(19px,2vw,23px);color:var(--ink);opacity:.9}
 
 /* cta */
 .cta{background:var(--bg2);border-top:1px solid var(--faint)}
@@ -149,7 +147,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .split{grid-template-columns:1fr}
   .flow,.checks{grid-template-columns:1fr;gap:28px}
   .road{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
-  .team{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
   .cta .who{grid-template-columns:1fr}
 }
 @media (max-width:640px){
@@ -160,7 +157,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .road img{aspect-ratio:16/9}
   .hero{min-height:88vh}
   .hero h1{font-size:clamp(26px,7.4vw,40px)}
-  .team img{width:72px;height:72px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -179,9 +175,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <h1>The operating system <br>for <span style="white-space:nowrap">real-world</span> experience.</h1>
     <p class="lede">Code and community working as one, making event production feel like magic.</p>
   </div>
+  <a class="cue" href="#story" aria-label="Scroll to read more"><span>Scroll</span><i></i></a>
 </div>
 
-<section class="story">
+<section class="story" id="story">
   <div class="wrap narrow">
     <p class="eyebrow">Where it started</p>
     <p class="lede">In August 2026, IMXP brought 4,200 people from more than 75 countries to the edge of Iceland to stand under a total solar eclipse.</p>
@@ -265,7 +262,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <p class="lede" style="margin-top:0">Each IMXP event in 2027 ships part of Orion and tests it with real crews, real money and a date that can't move. Then the same system opens to other producers.</p>
     </div>
     <ol class="road">
-      <li><img src="../media/events/coherence.jpg" alt="Coherence, Austin" loading="lazy"><span class="d">Mar 19 to 22 · Austin</span><b>Coherence</b><p>Orion beta: live demand testing and daily planning with the festival team.</p></li>
+      <li><img src="../media/events/coherence.jpg" alt="Coherence, Austin" loading="lazy"><span class="d">Mar 20 to 22 · Austin</span><b>Coherence</b><p>Orion beta: live demand testing and daily planning with the festival team.</p></li>
       <li><img src="../media/events/atomika.jpg" alt="ATOMIKA, Roswell" loading="lazy"><span class="d">May 7 to 9 · Roswell</span><b>ATOMIKA</b><p>The first full release, with vendor and crew approvals and payouts running through Orion.</p></li>
       <li><img src="../media/events/midnight.jpg" alt="Midnight Sun, Reykjavik" loading="lazy"><span class="d">Jul 9 to 11 · Reykjavík</span><b>Midnight Sun</b><p>The memory test: an event that starts from what Orion learned at the last ones.</p></li>
       <li><img src="../media/events/egypt.jpg" alt="Egypt Eclipse, Luxor" loading="lazy"><span class="d">Jul 30 to Aug 9 · Luxor</span><b>Egypt Eclipse</b><p>Our largest event, run end to end on Orion, from demand to settlement.</p></li>
@@ -296,20 +293,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <div><b>75+</b><span>Countries</span></div>
       <div><b>571</b><span>Applied to live and build at The Portal</span></div>
       <div><b>250</b><span>Artists and speakers at Iceland Eclipse</span></div>
-    </div>
-  </div>
-</section>
-
-<section style="padding-top:0">
-  <div class="wrap">
-    <p class="eyebrow">Who's building it</p>
-    <h2 style="max-width:22ch">A small team that runs the events and writes the software.</h2>
-    <div class="team">
-      <div><img src="../media/people/mitch-hs.jpg" alt="" loading="lazy"><b>Mitch Morales</b><span class="r">Founder &amp; CEO, IMXP</span><p>Created Texas Eclipse, 38,000 people in 2024, and the Euphoria festival. Twenty years building where experience meets technology.</p></div>
-      <div><img src="../media/people/tule-hs.jpg" alt="" loading="lazy"><b>Tule Romeo</b><span class="r">Lead Developer</span><p>Founded SimpleFi, a billing engine with 200,000+ users. Built ticketing for Boom Festival and Envision.</p></div>
-      <div><img src="../media/people/benjamin-hs.jpg" alt="" loading="lazy"><b>Benjamin Hill</b><span class="r">Product Engineer</span><p>Three years shipping products at Indeed. Founded B-Team Productions.</p></div>
-      <div><img src="../media/people/regan-hs.jpg" alt="" loading="lazy"><b>Regan Heckscher</b><span class="r">Systems Admin</span><p>Fifteen years connecting human and technical systems.</p></div>
-      <div><img src="../media/people/lee-hs.jpg" alt="" loading="lazy"><b>Lee Cruz</b><span class="r">AI &amp; Tech Coordinator</span><p>Builds AI-powered workflows and the infrastructure behind them.</p></div>
     </div>
   </div>
 </section>
