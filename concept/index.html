@@ -121,6 +121,23 @@ h2 + p{margin-top:24px}
 .cue i{display:block;width:1px;height:34px;background:linear-gradient(var(--green),transparent);animation:cue 2.2s ease-in-out infinite;transform-origin:top}
 @keyframes cue{0%{transform:scaleY(0);opacity:1}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
 @media (prefers-reduced-motion:reduce){.cue i{animation:none}}
+/* email capture */
+#ecap{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(6,14,25,.62);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:opacity .35s}
+#ecap.out{opacity:0;pointer-events:none}
+#ecap.hide{display:none}
+#ecap .card{width:min(400px,100%);background:rgba(11,22,38,.92);border:1px solid var(--faint);border-radius:14px;padding:32px 26px 24px;text-align:center}
+#ecap img{height:26px;width:auto;margin:0 auto 18px;display:block}
+#ecap h2{font-size:21px;font-weight:400;line-height:1.3;margin-bottom:8px;text-wrap:balance}
+#ecap p{color:var(--muted);font-size:15px;line-height:1.5;margin-bottom:20px;text-wrap:pretty}
+#ecap form{display:flex;flex-direction:column;gap:10px}
+#ecap input{width:100%;padding:13px 15px;border-radius:9px;border:1px solid var(--faint);background:rgba(252,250,247,.06);color:var(--ink);font-size:16px;font-family:inherit;outline:none}
+#ecap input:focus{border-color:rgba(252,250,247,.5)}
+#ecap input::placeholder{color:var(--muted)}
+#ecap button{width:100%;padding:13px;border-radius:9px;border:0;cursor:pointer;background:var(--green);color:var(--bg);font-size:15px;font-family:inherit}
+#ecap button:hover{opacity:.9}
+#ecap .err{color:#ff8a8a;font-size:13px;min-height:16px;text-align:left}
+#ecap .fine{color:var(--muted);opacity:.75;font-size:12px;margin-top:14px}
+html.ecap-on body{overflow:hidden}
 /* vision */
 .vision{position:relative;overflow:hidden;text-align:center;padding:clamp(120px,18vw,220px) 0}
 .vision img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -162,6 +179,52 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
 </head>
 <body>
+<div id="ecap" role="dialog" aria-modal="true" aria-labelledby="ecapH">
+  <div class="card">
+    <img src="../media/logos/orion-wordmark.png" alt="Orion">
+    <h2 id="ecapH">The operating system for real-world experience.</h2>
+    <p>Enter your email to read the overview.</p>
+    <form id="ecapForm" novalidate>
+      <input id="ecapEmail" type="email" placeholder="you@email.com" autocomplete="email" aria-label="Email address">
+      <div class="err" id="ecapErr"></div>
+      <button type="submit">Continue</button>
+    </form>
+    <div class="fine">We'll only use it to stay in touch about Orion.</div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='orion_concept_email',SUPA_URL='https://qmxhsendoepqeyeolzil.supabase.co',SUPA_KEY='sb_publishable_qU4HH0buJWQW3_RJk3QlYg_5r84ZfdP';
+  var box=document.getElementById('ecap'),root=document.documentElement;
+  function H(){return {'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json'};}
+  function track(email){
+    try{
+      var SID=(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(16).slice(2));
+      var ms=0,last=(document.visibilityState==='visible'?Date.now():null),sent=-1;
+      function tick(){if(last!==null){ms+=Math.min(Date.now()-last,60000);last=Date.now();}}
+      function send(k){tick();var s=Math.round(ms/1000);if(s<3||s===sent)return;sent=s;
+        fetch(SUPA_URL+'/rest/v1/rpc/deck_view_beat',{method:'POST',keepalive:!!k,headers:H(),body:JSON.stringify({p_deck:'orion-concept',p_session_id:SID,p_email:email,p_seconds:s})}).catch(function(){});}
+      document.addEventListener('visibilitychange',function(){tick();last=document.visibilityState==='visible'?Date.now():null;if(document.visibilityState==='hidden')send(true);});
+      setInterval(function(){send(false);},20000);addEventListener('pagehide',function(){send(true);});
+    }catch(_){}
+  }
+  var saved=null;try{saved=localStorage.getItem(KEY);}catch(_){}
+  if(saved){box.classList.add('hide');track(saved);return;}
+  root.classList.add('ecap-on');
+  var form=document.getElementById('ecapForm'),input=document.getElementById('ecapEmail'),err=document.getElementById('ecapErr'),re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var v=input.value.trim();
+    if(!re.test(v)){err.textContent='Please enter a valid email address.';input.focus();return;}
+    err.textContent='';
+    try{localStorage.setItem(KEY,v);}catch(_){}
+    fetch(SUPA_URL+'/rest/v1/orion_deck_leads',{method:'POST',keepalive:true,headers:Object.assign(H(),{'Prefer':'return=minimal'}),
+      body:JSON.stringify({email:v,name:null,source:'orion-concept',referrer:document.referrer||null,user_agent:navigator.userAgent})}).catch(function(){});
+    root.classList.remove('ecap-on');box.classList.add('out');setTimeout(function(){box.classList.add('hide');},400);
+    track(v);
+  });
+  setTimeout(function(){try{input.focus({preventScroll:true});}catch(_){}},300);
+})();
+</script>
 
 <header class="top"><div class="wrap">
   <img src="../media/logos/imxp-primary-lockup-white.png" alt="IMXP">
