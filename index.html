@@ -2155,6 +2155,136 @@ const DEMO_URL = "";
   later();
 })();
 </script>
+<!-- ============================================================
+     ORION, THE LITTLE GUIDE
+     The O from the wordmark with a star for an eye. Sits in the bottom-left corner,
+     changes pose with each slide, and leaves a short handwritten note that fades
+     after a few seconds (on phones, only on the cover). Tap him to see the note again. Holds still for reduced motion.
+     ============================================================ -->
+<style>
+#og{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:1000;display:flex;align-items:flex-end;gap:6px;pointer-events:none}
+#og .og-bot{pointer-events:auto;width:104px;height:auto;padding:0;border:0;background:none;cursor:pointer;display:block;-webkit-tap-highlight-color:transparent}
+#og .og-bot svg{width:100%;height:auto;display:block;overflow:visible}
+#og .og-say{pointer-events:auto;margin-bottom:64px;width:max-content;max-width:min(270px,calc(100vw - 150px));background:rgba(6,14,25,.94);border:1px solid rgba(252,250,247,.5);border-radius:12px 12px 12px 3px;padding:8px 12px 9px;color:var(--ink);opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+#og .og-say.on{opacity:1;transform:none}
+#og .og-say b{display:block;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--turq);margin-bottom:1px}
+#og .og-say span{display:block;font-family:var(--hand);font-weight:500;font-size:22px;line-height:1.08;text-wrap:pretty}
+#og[data-gate] .og-say{margin-bottom:66px}
+html[data-mode="portrait"] #og .og-bot{width:62px}
+html[data-mode="portrait"] #og .og-say{margin-bottom:42px;max-width:calc(100vw - 110px)}
+html[data-mode="portrait"] #og .og-say span{font-size:19px}
+html[data-mode="portrait"] #og:not([data-gate]){opacity:.96}
+
+#og .limb{stroke:var(--ink);stroke-width:3.2;stroke-linecap:round;fill:none}
+#og .jt,#og .hand{fill:var(--ink)}
+#og .foot{stroke:var(--ink);stroke-width:3.6;stroke-linecap:round}
+#og .shell{fill:var(--ink)}
+#og .star{fill:var(--bg)}
+#og .glow{fill:var(--turq);opacity:0;transition:opacity .3s}
+#og g{transform-origin:0 0}
+#og .j1,#og .j2,#og .eye{transition:transform .6s cubic-bezier(.3,.7,.3,1)}
+#og .blinker{animation:og-blink 4.6s infinite}
+@keyframes og-blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+#og .bot{animation:og-bob 3.2s ease-in-out infinite}
+@keyframes og-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+#og.p-wave .armR .j2{animation:og-wave .9s ease-in-out infinite alternate}
+@keyframes og-wave{from{transform:rotate(-38deg)}to{transform:rotate(22deg)}}
+#og.p-point .armR .j1{animation:og-jab 2.8s ease-in-out infinite}
+@keyframes og-jab{0%,100%{transform:rotate(-92deg)}50%{transform:rotate(-99deg)}}
+#og.talking .glow{animation:og-speak .5s ease-in-out infinite alternate}
+@keyframes og-speak{from{opacity:.5}to{opacity:1}}
+#og.p-talk .armL .j1{animation:og-gest 1.6s ease-in-out infinite alternate}
+@keyframes og-gest{from{transform:rotate(48deg)}to{transform:rotate(72deg)}}
+#og.p-float .bot{animation:og-drift 6s ease-in-out infinite}
+@keyframes og-drift{0%,100%{transform:translate(0,0) rotate(-9deg)}50%{transform:translate(0,-10px) rotate(9deg)}}
+@media (prefers-reduced-motion: reduce){#og *{animation:none!important;transition:none!important}}
+</style>
+<div id="og">
+  <button class="og-bot" type="button" aria-label="Orion, your guide. Show the note for this slide."><svg viewBox="-110 -110 220 230" aria-hidden="true"></svg></button>
+  <p class="og-say" aria-live="polite"><b>Orion</b><span></span></p>
+</div>
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg', root=document.getElementById('og'), svg=root.querySelector('svg'), say=root.querySelector('.og-say'), line=say.querySelector('span');
+  // joint angles in degrees; a limb pointing straight down is 0
+  var POSES={
+    idle: {ra:[-16,8],la:[16,-8],rl:[-4,2],ll:[4,-2],eye:[0,0]},
+    wave: {ra:[-150,-10],la:[18,-10],rl:[-5,2],ll:[5,-2],eye:[7,-7]},
+    point:{ra:[-92,-4],la:[20,-14],rl:[-10,6],ll:[6,-2],eye:[12,-1]},
+    talk: {ra:[-22,30],la:[60,-50],rl:[-4,2],ll:[4,-2],eye:[3,-3]},
+    float:{ra:[-120,40],la:[120,-40],rl:[-24,30],ll:[28,-36],eye:[-4,-6]}
+  };
+  // what Orion says on each slide, in order
+  var NOTES=[
+    ['wave','Hi, I’m Orion. I’ll walk you through.'],
+    ['talk','That’s the job I was built for.'],
+    ['point','A trillion-dollar market, and growing.'],
+    ['talk','97¢ of every concert dollar goes to costs. I’m here to change that.'],
+    ['wave','This is me. Hit play on the demo.'],
+    ['point','I ran Iceland Eclipse, start to finish.'],
+    ['point','Every IMXP event teaches me something new.'],
+    ['wave','The humans who built me.'],
+    ['talk','100K+ people to learn from, in 75+ countries.'],
+    ['point','Nobody else covers all five steps.'],
+    ['talk','IMXP is my first customer.'],
+    ['point','From our own events to the long tail.'],
+    ['talk','Here’s how to come along.'],
+    ['float','On this planet and beyond.']
+  ];
+  var GATE=['wave','Hi, I’m Orion. Enter your email and I’ll show you around.'];
+
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+  var J={};
+  function limb(parent,name,x,y,L1,L2,end){
+    var r=el('g',{'class':name,transform:'translate('+x+','+y+')'},parent);
+    var j1=el('g',{'class':'j1'},r); el('line',{'class':'limb',x1:0,y1:0,x2:0,y2:L1},j1);
+    var k=el('g',{transform:'translate(0,'+L1+')'},j1); var j2=el('g',{'class':'j2'},k); el('line',{'class':'limb',x1:0,y1:0,x2:0,y2:L2},j2);
+    if(end==='hand')el('circle',{'class':'hand',cx:0,cy:L2+1,r:4.2},j2); else el('line',{'class':'foot',x1:-5,y1:L2,x2:7,y2:L2},j2);
+    el('circle',{'class':'jt',cx:0,cy:0,r:3.2},k); el('circle',{'class':'jt',cx:0,cy:0,r:3.4},r);
+    J[name]=[j1,j2];
+  }
+  var STAR='M0,-27 C1.1,-9 1.6,-2.4 3.2,-1.6 C5,-0.8 11,-0.4 27,0 C11,0.4 5,0.8 3.2,1.6 C2.4,2.4 1.1,9 0,27 C-1.1,9 -2.4,2.4 -3.2,1.6 C-5,0.8 -11,0.4 -27,0 C-11,-0.4 -5,-0.8 -3.2,-1.6 C-1.6,-2.4 -1.1,-9 0,-27 Z';
+  var bot=el('g',{'class':'bot'},svg), g=el('g',{transform:'translate(0,-6)'},bot);
+  limb(g,'legL',-19,40,30,30,'foot'); limb(g,'legR',19,40,30,30,'foot');
+  limb(g,'armL',-44,8,27,25,'hand'); limb(g,'armR',44,8,27,25,'hand');
+  el('rect',{'class':'shell',x:-48,y:-48,width:96,height:96,rx:24},g);
+  var eye=el('g',{'class':'eye'},g), bl=el('g',{'class':'blinker'},eye);
+  el('path',{'class':'star',d:STAR},bl); el('path',{'class':'glow',d:STAR},bl);
+
+  function rot(e,a){e.style.transform='rotate('+a+'deg)';}
+  function pose(name){
+    var P=POSES[name]||POSES.idle;
+    root.className='p-'+name;
+    rot(J.armR[0],P.ra[0]);rot(J.armR[1],P.ra[1]);rot(J.armL[0],P.la[0]);rot(J.armL[1],P.la[1]);
+    rot(J.legR[0],P.rl[0]);rot(J.legR[1],P.rl[1]);rot(J.legL[0],P.ll[0]);rot(J.legL[1],P.ll[1]);
+    eye.style.transform='translate('+P.eye[0]+'px,'+P.eye[1]+'px)';
+  }
+  var hideT=0,talkT=0,last=-2;
+  function speak(note,quiet){
+    pose(note[0]);
+    if(quiet){say.classList.remove('on');return;} line.textContent=note[1]; say.classList.add('on'); root.classList.add('talking');
+    clearTimeout(hideT); clearTimeout(talkT);
+    talkT=setTimeout(function(){root.classList.remove('talking');},Math.min(4000,600+note[1].length*45));
+    hideT=setTimeout(function(){say.classList.remove('on');},6500);
+  }
+  var gate=document.getElementById('egate');
+  function gateOpen(){return gate&&!gate.classList.contains('hide');}
+  function current(){var a=document.querySelector('.slide.active');return a?Math.max(0,(parseInt(a.getAttribute('data-slide'),10)||1)-1):0;}
+  function update(force){
+    if(gateOpen()){root.setAttribute('data-gate','');if(last!==-1||force){last=-1;speak(GATE);}return;}
+    root.removeAttribute('data-gate');
+    var i=current(); if(i===last&&!force)return; last=i;
+    // on phones the note covers the text, so after the cover it only shows when Orion is tapped
+    speak(NOTES[i]||['idle',''], !force && i>0 && document.documentElement.dataset.mode==='portrait');
+  }
+  root.querySelector('.og-bot').addEventListener('click',function(e){e.stopPropagation();update(true);});
+  var mo=new MutationObserver(function(){update(false);});
+  document.querySelectorAll('.slide').forEach(function(s){mo.observe(s,{attributes:true,attributeFilter:['class']});});
+  if(gate)mo.observe(gate,{attributes:true,attributeFilter:['class']});
+  pose('idle'); setTimeout(function(){update(true);},700);
+})();
+</script>
+
 </body>
 </html>
 <!-- redeploy trigger 1791231872 -->
