@@ -487,5 +487,86 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   pose('idle'); setTimeout(function(){update(true);},700);
 })();
 </script>
+<!-- ============================================================
+     ASK ORION
+     A small chat panel next to the Orion guide. Questions go to the ask-orion
+     Supabase function, which answers from this page's knowledge base.
+     ============================================================ -->
+<style>
+#ao-open{position:fixed;left:calc(max(14px,env(safe-area-inset-left,0px)) + 96px);bottom:calc(30px + env(safe-area-inset-bottom,0px));z-index:1001;display:flex;align-items:center;gap:8px;padding:9px 14px 9px 12px;border-radius:999px;border:1px solid rgba(252,250,247,.22);background:rgba(6,14,25,.82);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#FCFAF7;font:400 13px/1 "Geist Mono","Geist Mono Embedded",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:border-color .2s,transform .2s}
+#ao-open:hover{border-color:#50E3FF;transform:translateY(-1px)}
+#ao-open i{width:8px;height:8px;border-radius:50%;background:#80FCA7;box-shadow:0 0 10px #80FCA7}
+#ao-open.ao-hide{display:none}
+#ao{position:fixed;left:max(14px,env(safe-area-inset-left,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:1002;width:min(400px,calc(100vw - 28px));height:min(560px,calc(100dvh - 40px));display:flex;flex-direction:column;border-radius:18px;border:1px solid rgba(252,250,247,.16);background:rgba(8,17,30,.97);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 24px 60px rgba(0,0,0,.5);color:#FCFAF7;font:400 15px/1.5 "Geist","Geist Embedded",system-ui,sans-serif;overflow:hidden}
+#ao[hidden]{display:none}
+#ao .ao-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(252,250,247,.1)}
+#ao .ao-hd b{font-weight:400;font-size:16px}
+#ao .ao-hd span{display:block;font:400 11px/1.3 "Geist Mono",ui-monospace,monospace;letter-spacing:.06em;text-transform:uppercase;color:rgba(252,250,247,.55);margin-top:3px}
+#ao .ao-x{width:32px;height:32px;border-radius:50%;border:0;background:rgba(252,250,247,.08);color:#FCFAF7;font-size:18px;cursor:pointer}
+#ao .ao-log{flex:1;overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+#ao .ao-m{max-width:88%;padding:10px 13px;border-radius:14px;white-space:pre-wrap;word-wrap:break-word;text-wrap:pretty}
+#ao .ao-m.u{align-self:flex-end;background:#7264F1;border-bottom-right-radius:4px}
+#ao .ao-m.a{align-self:flex-start;background:rgba(252,250,247,.07);border-bottom-left-radius:4px}
+#ao .ao-m.a.wait{color:rgba(252,250,247,.55)}
+#ao .ao-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 10px}
+#ao .ao-chips button{border:1px solid rgba(80,227,255,.35);background:none;color:#FCFAF7;border-radius:999px;padding:6px 11px;font:inherit;font-size:13px;cursor:pointer;text-align:left}
+#ao .ao-chips button:hover{border-color:#50E3FF}
+#ao form{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(252,250,247,.1)}
+#ao input{flex:1;min-width:0;padding:11px 13px;border-radius:10px;border:1px solid rgba(252,250,247,.16);background:rgba(252,250,247,.05);color:#FCFAF7;font:inherit;font-size:16px;outline:none}
+#ao input:focus{border-color:rgba(252,250,247,.45)}
+#ao form button{padding:0 15px;border-radius:10px;border:0;background:#80FCA7;color:#060E19;font:inherit;font-size:14px;cursor:pointer}
+#ao form button:disabled{opacity:.5;cursor:default}
+#ao .ao-fine{padding:0 16px 10px;font-size:11px;color:rgba(252,250,247,.45)}
+@media (max-width:640px){#ao-open{left:calc(max(14px,env(safe-area-inset-left,0px)) + 62px);bottom:calc(20px + env(safe-area-inset-bottom,0px));padding:8px 12px 8px 10px;font-size:11px}}
+</style>
+<button id="ao-open" type="button" aria-haspopup="dialog" aria-controls="ao"><i></i>Ask Orion</button>
+<div id="ao" role="dialog" aria-label="Ask Orion" hidden data-prevent-swipe data-allow-scroll>
+  <div class="ao-hd"><div><b>Ask Orion</b><span>About Orion</span></div><button class="ao-x" type="button" aria-label="Close">&times;</button></div>
+  <div class="ao-log" aria-live="polite"></div>
+  <div class="ao-chips"><button type="button">What is Orion?</button><button type="button">How does it work?</button><button type="button">Where is it being tested?</button><button type="button">How can I get involved?</button></div>
+  <form><input type="text" maxlength="600" placeholder="Ask a question" aria-label="Your question" autocomplete="off"><button type="submit">Ask</button></form>
+  <p class="ao-fine">AI answers from Orion's materials and may be imperfect. For anything important, email mitch@imxp.org.</p>
+</div>
+<script>
+(function(){
+  var MODE='concept', EMAIL_KEY='orion_concept_email';
+  var URL_FN='https://qmxhsendoepqeyeolzil.supabase.co/functions/v1/ask-orion';
+  var KEY='sb_publishable_qU4HH0buJWQW3_RJk3QlYg_5r84ZfdP';
+  var openBtn=document.getElementById('ao-open'), box=document.getElementById('ao');
+  var log=box.querySelector('.ao-log'), form=box.querySelector('form'), input=form.querySelector('input'), send=form.querySelector('button'), chips=box.querySelector('.ao-chips');
+  var history=[], busy=false, greeted=false;
+  ['keydown','keyup','keypress','wheel','touchstart','touchmove','touchend','pointerdown'].forEach(function(t){box.addEventListener(t,function(e){if(t==='keydown'&&e.key==='Escape')hide();e.stopPropagation();},{passive:true});});
+  function add(role,text,cls){var d=document.createElement('div');d.className='ao-m '+(role==='user'?'u':'a')+(cls?' '+cls:'');d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;return d;}
+  function show(){box.hidden=false;openBtn.classList.add('ao-hide');if(!greeted){greeted=true;add('assistant',"Hi, I'm Orion. Ask me anything about what we're building.");}setTimeout(function(){try{input.focus({preventScroll:true});}catch(_){}},50);}
+  function hide(){box.hidden=true;openBtn.classList.remove('ao-hide');}
+  var gateEl=document.getElementById('egate')||document.getElementById('ecap');
+  function gateSync(){var on=gateEl&&!gateEl.classList.contains('hide');openBtn.style.display=on?'none':'';if(on&&!box.hidden)hide();}
+  if(gateEl){gateSync();new MutationObserver(gateSync).observe(gateEl,{attributes:true,attributeFilter:['class']});}
+  openBtn.addEventListener('click',show);
+  box.querySelector('.ao-x').addEventListener('click',hide);
+  var bot=document.querySelector('#og .og-bot'); if(bot)bot.addEventListener('click',function(){if(box.hidden)show();});
+  chips.addEventListener('click',function(e){var b=e.target.closest('button');if(b)ask(b.textContent);});
+  form.addEventListener('submit',function(e){e.preventDefault();ask(input.value);});
+  function email(){try{return localStorage.getItem(EMAIL_KEY)||null;}catch(_){return null;}}
+  function ask(q){
+    q=(q||'').trim(); if(!q||busy)return;
+    busy=true; send.disabled=true; input.value=''; chips.style.display='none';
+    add('user',q); var w=add('assistant','Thinking…','wait');
+    fetch(URL_FN,{method:'POST',headers:{'Content-Type':'application/json','apikey':KEY,'Authorization':'Bearer '+KEY},body:JSON.stringify({mode:MODE,question:q,email:email(),history:history})})
+      .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+      .then(function(res){
+        var msg;
+        if(res.ok&&res.j.answer){msg=res.j.answer;history.push({role:'user',content:q},{role:'assistant',content:msg});history=history.slice(-8);}
+        else if(res.j.error==='not_approved')msg='Ask Orion opens once your deck access is approved. Email mitch@imxp.org with any questions in the meantime.';
+        else if(res.j.error==='rate_limited')msg="That's a lot of questions for one hour. Try again a little later, or email mitch@imxp.org.";
+        else if(res.j.error==='not_configured')msg="I'm still warming up and can't answer just yet. Email mitch@imxp.org and Mitch will get back to you.";
+        else msg='Something went wrong on my side. Try again in a moment, or email mitch@imxp.org.';
+        w.classList.remove('wait'); w.textContent=msg;
+      },function(){w.classList.remove('wait');w.textContent='I could not connect just now. Try again in a moment, or email mitch@imxp.org.';})
+      .then(function(){busy=false;send.disabled=false;log.scrollTop=log.scrollHeight;});
+  }
+})();
+</script>
+
 </body>
 </html>
