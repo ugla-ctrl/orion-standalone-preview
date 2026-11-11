@@ -159,6 +159,8 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
 #gate input:focus{outline:none;border-color:var(--turq)}
 #gate button{margin-top:16px;width:100%;background:var(--purple);border:none;border-radius:10px;padding:14px 16px;color:var(--ink);font-size:15px;font-family:var(--sans);cursor:pointer}
 #gate button:hover{filter:brightness(1.1)}
+#gate input#em{font-family:var(--sans);font-size:16px}
+#gate form{margin:0}
 #gate .err{color:#ff8a8a;font-size:14px;margin-top:14px;min-height:20px}
 #gate .hint{color:var(--muted);font-size:13px;margin-top:28px}
 #gate .hint a{color:var(--green)}
@@ -170,7 +172,7 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
 <body>
 
 <div id="gate">
-  <div class="card">
+  <div class="card" id="pwCard">
     <img class="logo" src="../media/logos/orion-wordmark.png" alt="Orion">
     <h1>Seed Proposal</h1>
     <p class="sub">This page is for Stratum Capital only.<br>Enter the password you were given to continue.</p>
@@ -178,6 +180,17 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
     <button id="go">Unlock</button>
     <p class="err" id="err"></p>
     <p class="hint">Trouble getting in? Contact <a href="mailto:mitch@imxp.org">mitch@imxp.org</a>.</p>
+  </div>
+  <div class="card" id="emailCard" hidden>
+    <img class="logo" src="../media/logos/orion-wordmark.png" alt="Orion">
+    <h1>One last step</h1>
+    <p class="sub">Enter your email to open the proposal.</p>
+    <form id="emailForm" novalidate>
+      <input id="em" type="email" placeholder="you@email.com" autocomplete="email" aria-label="Email address">
+      <p class="err" id="emErr"></p>
+      <button type="submit">Continue</button>
+    </form>
+    <p class="hint">We'll only use it to follow up about this proposal.</p>
   </div>
 </div>
 
@@ -377,6 +390,8 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
 (function(){
   var STORE_KEY = 'orion_stratum_unlocked';
   var HASH = '35ced76a01f62e3d5afde686784da96ff70411bd0a87ac669f6c19c0280b6455';
+  var EMAIL_KEY = 'orion_stratum_email';
+  var SUPA_URL = 'https://qmxhsendoepqeyeolzil.supabase.co', SUPA_KEY = 'sb_publishable_qU4HH0buJWQW3_RJk3QlYg_5r84ZfdP';
 
   function toHex(buf){
     return Array.prototype.map.call(new Uint8Array(buf), function(b){ return ('0'+b.toString(16)).slice(-2); }).join('');
@@ -385,15 +400,52 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
     var enc = new TextEncoder().encode(str);
     return crypto.subtle.digest('SHA-256', enc).then(toHex);
   }
-  function unlock(){
+  function H(){ return {'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Content-Type':'application/json'}; }
+  // Visit tracking: active-tab time per visit, written through the deck_view_beat() database function with the viewer's email.
+  function track(email){
+    try{
+      var SID = (crypto.randomUUID ? crypto.randomUUID() : Date.now()+'-'+Math.random().toString(16).slice(2));
+      var ms = 0, last = (document.visibilityState === 'visible' ? Date.now() : null), sent = -1;
+      function tick(){ if (last !== null) { ms += Math.min(Date.now() - last, 60000); last = Date.now(); } }
+      function send(k){
+        tick(); var s = Math.round(ms/1000); if (s < 3 || s === sent) return; sent = s;
+        fetch(SUPA_URL+'/rest/v1/rpc/deck_view_beat', {method:'POST', keepalive:!!k, headers:H(), body:JSON.stringify({p_deck:'orion-stratum', p_session_id:SID, p_email:email, p_seconds:s})}).catch(function(){});
+      }
+      document.addEventListener('visibilitychange', function(){ tick(); last = document.visibilityState === 'visible' ? Date.now() : null; if (document.visibilityState === 'hidden') send(true); });
+      setInterval(function(){ send(false); }, 20000);
+      addEventListener('pagehide', function(){ send(true); });
+    }catch(e){}
+  }
+  function reveal(email){
     document.getElementById('gate').style.display = 'none';
     document.getElementById('content').style.display = 'block';
+    track(email);
   }
+  // After the password: ask for an email once per browser, so every recorded visit has an address.
+  function afterPassword(){
+    var saved = null;
+    try { saved = localStorage.getItem(EMAIL_KEY); } catch(e){}
+    if (saved) { reveal(saved); return; }
+    document.getElementById('pwCard').hidden = true;
+    document.getElementById('emailCard').hidden = false;
+    setTimeout(function(){ try { document.getElementById('em').focus({preventScroll:true}); } catch(e){} }, 100);
+  }
+  document.getElementById('emailForm').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var v = (document.getElementById('em').value || '').trim();
+    var emErr = document.getElementById('emErr');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { emErr.textContent = 'Please enter a valid email address.'; return; }
+    emErr.textContent = '';
+    try { localStorage.setItem(EMAIL_KEY, v); } catch(e){}
+    fetch(SUPA_URL+'/rest/v1/orion_deck_leads', {method:'POST', keepalive:true, headers:Object.assign(H(), {'Prefer':'return=minimal'}),
+      body:JSON.stringify({email:v, name:null, source:'orion-stratum-gate', referrer:document.referrer||null, user_agent:navigator.userAgent})}).catch(function(){});
+    reveal(v);
+  });
   function tryUnlock(pw){
     return sha256(pw).then(function(h){
       if (h === HASH) {
         try { sessionStorage.setItem(STORE_KEY, '1'); } catch(e){}
-        unlock();
+        afterPassword();
         return true;
       }
       return false;
@@ -401,7 +453,7 @@ footer p{margin:6px auto;max-width:90ch;text-transform:none;font-family:var(--sa
   }
   // Returning visitor this session
   try {
-    if (sessionStorage.getItem(STORE_KEY) === '1') { unlock(); }
+    if (sessionStorage.getItem(STORE_KEY) === '1') { afterPassword(); }
   } catch(e){}
 
   var btn = document.getElementById('go');
